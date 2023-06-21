@@ -15,6 +15,8 @@ class CatalogHeaderView: UIView{
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        
+        
         style()
         layout()
     }

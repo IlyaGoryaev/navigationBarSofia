@@ -13,7 +13,7 @@
 		9D65403D2A40F0DD00EDAE2C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D65403C2A40F0DD00EDAE2C /* ViewController.swift */; };
 		9D65403F2A40F0E500EDAE2C /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D65403E2A40F0E500EDAE2C /* PersonViewController.swift */; };
 		9D6540412A40F0EE00EDAE2C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6540402A40F0EE00EDAE2C /* SettingsViewController.swift */; };
-		9D6540432A40F65500EDAE2C /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6540422A40F65500EDAE2C /* CatalogViewController.swift */; };
+		9D6540432A40F65500EDAE2C /* CatalogViewControllerKitchens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6540422A40F65500EDAE2C /* CatalogViewControllerKitchens.swift */; };
 		9D6540452A40F88B00EDAE2C /* CatalogHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6540442A40F88B00EDAE2C /* CatalogHeaderView.swift */; };
 		9D6540482A4236CC00EDAE2C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9D6540472A4236CC00EDAE2C /* FirebaseAnalytics */; };
 		9D65404A2A4236CC00EDAE2C /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 9D6540492A4236CC00EDAE2C /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -47,6 +47,8 @@
 		9D6540832A42FABF00EDAE2C /* StorageDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6540822A42FABF00EDAE2C /* StorageDownload.swift */; };
 		9D6540872A430F2200EDAE2C /* TilesName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6540862A430F2200EDAE2C /* TilesName.swift */; };
 		9D6540892A43111A00EDAE2C /* PicturesFromFirebaseToTiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6540882A43111A00EDAE2C /* PicturesFromFirebaseToTiles.swift */; };
+		9D65408D2A4353D700EDAE2C /* CatalogViewControllerWardrobes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D65408C2A4353D700EDAE2C /* CatalogViewControllerWardrobes.swift */; };
+		9D6540912A43741000EDAE2C /* DesignButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6540902A43741000EDAE2C /* DesignButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,13 +60,15 @@
 		9D65403C2A40F0DD00EDAE2C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9D65403E2A40F0E500EDAE2C /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
 		9D6540402A40F0EE00EDAE2C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		9D6540422A40F65500EDAE2C /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
+		9D6540422A40F65500EDAE2C /* CatalogViewControllerKitchens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewControllerKitchens.swift; sourceTree = "<group>"; };
 		9D6540442A40F88B00EDAE2C /* CatalogHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogHeaderView.swift; sourceTree = "<group>"; };
 		9D65407D2A42E1F500EDAE2C /* CatalogTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTileView.swift; sourceTree = "<group>"; };
 		9D6540802A42F4CE00EDAE2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9D6540822A42FABF00EDAE2C /* StorageDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDownload.swift; sourceTree = "<group>"; };
 		9D6540862A430F2200EDAE2C /* TilesName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesName.swift; sourceTree = "<group>"; };
 		9D6540882A43111A00EDAE2C /* PicturesFromFirebaseToTiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesFromFirebaseToTiles.swift; sourceTree = "<group>"; };
+		9D65408C2A4353D700EDAE2C /* CatalogViewControllerWardrobes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewControllerWardrobes.swift; sourceTree = "<group>"; };
+		9D6540902A43741000EDAE2C /* DesignButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +133,10 @@
 				9D6540312A40EF1E00EDAE2C /* Assets.xcassets */,
 				9D65403E2A40F0E500EDAE2C /* PersonViewController.swift */,
 				9D6540332A40EF1E00EDAE2C /* LaunchScreen.storyboard */,
+				9D6540902A43741000EDAE2C /* DesignButton.swift */,
 				9D6540822A42FABF00EDAE2C /* StorageDownload.swift */,
 				9D6540402A40F0EE00EDAE2C /* SettingsViewController.swift */,
+				9D65408C2A4353D700EDAE2C /* CatalogViewControllerWardrobes.swift */,
 				9D65407F2A42F41D00EDAE2C /* Catalog */,
 				9D6540362A40EF1E00EDAE2C /* Info.plist */,
 				9D6540802A42F4CE00EDAE2C /* GoogleService-Info.plist */,
@@ -142,7 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				9D6540442A40F88B00EDAE2C /* CatalogHeaderView.swift */,
-				9D6540422A40F65500EDAE2C /* CatalogViewController.swift */,
+				9D6540422A40F65500EDAE2C /* CatalogViewControllerKitchens.swift */,
 				9D65407D2A42E1F500EDAE2C /* CatalogTileView.swift */,
 				9D6540882A43111A00EDAE2C /* PicturesFromFirebaseToTiles.swift */,
 				9D6540862A430F2200EDAE2C /* TilesName.swift */,
@@ -254,13 +260,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D6540892A43111A00EDAE2C /* PicturesFromFirebaseToTiles.swift in Sources */,
-				9D6540432A40F65500EDAE2C /* CatalogViewController.swift in Sources */,
+				9D6540432A40F65500EDAE2C /* CatalogViewControllerKitchens.swift in Sources */,
 				9D65407E2A42E1F500EDAE2C /* CatalogTileView.swift in Sources */,
+				9D6540912A43741000EDAE2C /* DesignButton.swift in Sources */,
 				9D65403D2A40F0DD00EDAE2C /* ViewController.swift in Sources */,
 				9D65403F2A40F0E500EDAE2C /* PersonViewController.swift in Sources */,
 				9D6540292A40EF1D00EDAE2C /* AppDelegate.swift in Sources */,
 				9D6540872A430F2200EDAE2C /* TilesName.swift in Sources */,
 				9D6540832A42FABF00EDAE2C /* StorageDownload.swift in Sources */,
+				9D65408D2A4353D700EDAE2C /* CatalogViewControllerWardrobes.swift in Sources */,
 				9D6540412A40F0EE00EDAE2C /* SettingsViewController.swift in Sources */,
 				9D6540452A40F88B00EDAE2C /* CatalogHeaderView.swift in Sources */,
 			);

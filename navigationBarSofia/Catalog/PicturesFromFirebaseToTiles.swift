@@ -5,7 +5,7 @@ class PicturesFromFirebseToTiles{
     static let tiles = PicturesFromFirebseToTiles()
     
     
-    func initTiles() -> [CatalogTileView]{
+    func initTiles(nameFolder: String) -> [CatalogTileView]{
         
         var tiles: [CatalogTileView] = []
         
@@ -13,7 +13,7 @@ class PicturesFromFirebseToTiles{
             
             tiles.append(CatalogTileView(TilesNames.tilesNames[i], "Лайм"))
             
-            FirebaseDownload.shared.getPicture(name: TilesNames.tilesNames[i] + ".jpg") { pic in
+            FirebaseDownload.shared.getPicture(name: TilesNames.tilesNames[i] + ".jpg", nameFolder: nameFolder) { pic in
                 
                 tiles[i].image.image = pic
                 

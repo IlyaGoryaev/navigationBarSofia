@@ -1,26 +1,17 @@
-//
-//  CatalogViewController.swift
-//  navigationBarSofia
-//
-//  Created by Илья Горяев on 19.06.2023.
-//
 
 import UIKit
 
-class CatalogViewController: ViewController{
+class CatalogViewControllerWardrobes: ViewController{
     
     let headerView = CatalogHeaderView()
-    
     var headerViewTopConstraints: NSLayoutConstraint?
     
+    
     let scrollView = UIScrollView()
-    
     let stackView = UIStackView()
+ 
+    var tiles = PicturesFromFirebseToTiles.tiles.initTiles(nameFolder: "Wardrobe")
     
-    var tiles = PicturesFromFirebseToTiles.tiles.initTiles()
-    
-    let cellID = "cellId"
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +23,9 @@ class CatalogViewController: ViewController{
         title = "Catalog"
         headerView.backgroundColor = .white
         
+        headerView.catalogButton1.addTarget(self, action: #selector(onClickCatalogButton1), for: .touchUpInside)
         
+        headerView.catalogButton2.titleLabel?.font = UIFont(name: "Avenir Heavy", size: 20)
         
         style()
         layout()
@@ -46,11 +39,17 @@ class CatalogViewController: ViewController{
         scrollView.delegate = self
     }
     
+    @objc func onClickCatalogButton1(){
+        tabBarController?.viewControllers?[0] = CatalogViewControllerKitchens()
+        
+    }
+    
+    
+    
+    
     
 }
-
-
-extension CatalogViewController{
+extension CatalogViewControllerWardrobes{
     
     func style(){
         headerView.translatesAutoresizingMaskIntoConstraints = false
@@ -80,14 +79,11 @@ extension CatalogViewController{
         
         scrollView.addSubview(stackView)
                 
-        //tiles.append(CatalogTileView("Renjren", "Джаз.jpg"))
-                
         for tile in tiles{
             
             addChild(tile)
             stackView.addArrangedSubview(tile.view)
             tile.didMove(toParent: self)
-            //!!!!
             
         }
         
@@ -123,7 +119,7 @@ extension CatalogViewController{
 }
 //MARK: TableView
 
-extension CatalogViewController: UIScrollViewDelegate{
+extension CatalogViewControllerWardrobes: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
      let y = scrollView.contentOffset.y
      

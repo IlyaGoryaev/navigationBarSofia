@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-        let catalogVC = CatalogViewController()
+        let catalogVC = CatalogViewControllerKitchens( )
         let personVC = PersonViewController()
         let settingsVC = SettingsViewController()
         
