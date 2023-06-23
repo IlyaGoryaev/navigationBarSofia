@@ -73,7 +73,6 @@ extension CatalogHeaderView{
         viewLineConstraint = viewLine.widthAnchor.constraint(equalToConstant: 68)
         viewLineConstraintLeading = viewLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15)
         NSLayoutConstraint.activate([
-            //catalogLabel.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1),
             catalogLabel.topAnchor.constraint(equalTo: topAnchor, constant: 60),
             catalogLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
             trailingAnchor.constraint(equalToSystemSpacingAfter: catalogLabel.trailingAnchor, multiplier: 1),
@@ -88,7 +87,7 @@ extension CatalogHeaderView{
             
             viewLine.bottomAnchor.constraint(equalTo: bottomAnchor),
             viewLineConstraintLeading!,
-            viewLine.heightAnchor.constraint(equalToConstant: 5),
+            viewLine.heightAnchor.constraint(equalToConstant: 2),
             viewLineConstraint!,
 
             favButton.topAnchor.constraint(equalToSystemSpacingBelow: catalogLabel.bottomAnchor, multiplier: 2),

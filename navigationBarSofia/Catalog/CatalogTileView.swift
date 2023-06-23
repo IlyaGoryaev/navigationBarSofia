@@ -50,7 +50,7 @@ class CatalogTileView: UIViewController{
     @objc func onClickFavButton(){
         if self.favButton.image(for: .normal) == UIImage(named: "HeartRed3"){
             
-            self.favButton.setImage(UIImage(named: "Heart"), for: .normal)
+            self.favButton.setImage(UIImage(named: "HeartW"), for: .normal)
             FavoritesToFirebase.FavoritesSave.deleteFromFirebase(name: label.text!)
             
             
@@ -125,8 +125,4 @@ extension CatalogTileView{
         
         
     }
-    
-    
-    
-    
 }

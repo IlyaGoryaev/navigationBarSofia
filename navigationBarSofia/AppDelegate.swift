@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .systemBackground
         
         
-        
-        
-        let catalogVC = CatalogViewControllerKitchens()
+        let layout = UICollectionViewFlowLayout()
+         
+        let catalogVC = CatalogViewControllerKitchens(collectionViewLayout: layout)
         let personVC = PersonViewController()
         let settingsVC = SettingsViewController()
         
