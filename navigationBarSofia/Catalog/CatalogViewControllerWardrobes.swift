@@ -7,6 +7,7 @@ class CatalogViewControllerWardrobes: ViewController{
     var headerViewTopConstraints: NSLayoutConstraint?
     
     
+    
     let scrollView = UIScrollView()
     let stackView = UIStackView()
  
@@ -24,6 +25,7 @@ class CatalogViewControllerWardrobes: ViewController{
         headerView.backgroundColor = .white
         
         headerView.catalogButton1.addTarget(self, action: #selector(onClickCatalogButton1), for: .touchUpInside)
+        headerView.favButton.addTarget(self, action: #selector(onClickFavButton), for: .touchUpInside)
         
         headerView.catalogButton2.titleLabel?.font = UIFont(name: "Avenir Heavy", size: 20)
         
@@ -44,6 +46,11 @@ class CatalogViewControllerWardrobes: ViewController{
         
     }
     
+    @objc func onClickFavButton(){
+        
+        tabBarController!.viewControllers![0] = CatalogViewControllerFavorites()
+    }
+    
     
     
     
@@ -58,6 +65,7 @@ extension CatalogViewControllerWardrobes{
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         
         
         stackView.axis = .vertical

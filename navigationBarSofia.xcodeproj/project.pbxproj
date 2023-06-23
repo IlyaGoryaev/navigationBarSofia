@@ -49,6 +49,9 @@
 		9D6540892A43111A00EDAE2C /* PicturesFromFirebaseToTiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6540882A43111A00EDAE2C /* PicturesFromFirebaseToTiles.swift */; };
 		9D65408D2A4353D700EDAE2C /* CatalogViewControllerWardrobes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D65408C2A4353D700EDAE2C /* CatalogViewControllerWardrobes.swift */; };
 		9D6540912A43741000EDAE2C /* DesignButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6540902A43741000EDAE2C /* DesignButton.swift */; };
+		9DDC92882A449E79003D21E3 /* FavToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC92872A449E79003D21E3 /* FavToFirebase.swift */; };
+		9DDC928C2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC928B2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift */; };
+		9DDC928E2A44C5E7003D21E3 /* CatalogViewControllerFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC928D2A44C5E7003D21E3 /* CatalogViewControllerFavorites.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +72,9 @@
 		9D6540882A43111A00EDAE2C /* PicturesFromFirebaseToTiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesFromFirebaseToTiles.swift; sourceTree = "<group>"; };
 		9D65408C2A4353D700EDAE2C /* CatalogViewControllerWardrobes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewControllerWardrobes.swift; sourceTree = "<group>"; };
 		9D6540902A43741000EDAE2C /* DesignButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignButton.swift; sourceTree = "<group>"; };
+		9DDC92872A449E79003D21E3 /* FavToFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavToFirebase.swift; sourceTree = "<group>"; };
+		9DDC928B2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadFavoritesFromDatabase.swift; sourceTree = "<group>"; };
+		9DDC928D2A44C5E7003D21E3 /* CatalogViewControllerFavorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewControllerFavorites.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +142,6 @@
 				9D6540902A43741000EDAE2C /* DesignButton.swift */,
 				9D6540822A42FABF00EDAE2C /* StorageDownload.swift */,
 				9D6540402A40F0EE00EDAE2C /* SettingsViewController.swift */,
-				9D65408C2A4353D700EDAE2C /* CatalogViewControllerWardrobes.swift */,
 				9D65407F2A42F41D00EDAE2C /* Catalog */,
 				9D6540362A40EF1E00EDAE2C /* Info.plist */,
 				9D6540802A42F4CE00EDAE2C /* GoogleService-Info.plist */,
@@ -147,9 +152,13 @@
 		9D65407F2A42F41D00EDAE2C /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
+				9D65408C2A4353D700EDAE2C /* CatalogViewControllerWardrobes.swift */,
 				9D6540442A40F88B00EDAE2C /* CatalogHeaderView.swift */,
+				9DDC928B2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift */,
 				9D6540422A40F65500EDAE2C /* CatalogViewControllerKitchens.swift */,
+				9DDC928D2A44C5E7003D21E3 /* CatalogViewControllerFavorites.swift */,
 				9D65407D2A42E1F500EDAE2C /* CatalogTileView.swift */,
+				9DDC92872A449E79003D21E3 /* FavToFirebase.swift */,
 				9D6540882A43111A00EDAE2C /* PicturesFromFirebaseToTiles.swift */,
 				9D6540862A430F2200EDAE2C /* TilesName.swift */,
 			);
@@ -264,10 +273,13 @@
 				9D65407E2A42E1F500EDAE2C /* CatalogTileView.swift in Sources */,
 				9D6540912A43741000EDAE2C /* DesignButton.swift in Sources */,
 				9D65403D2A40F0DD00EDAE2C /* ViewController.swift in Sources */,
+				9DDC928E2A44C5E7003D21E3 /* CatalogViewControllerFavorites.swift in Sources */,
+				9DDC92882A449E79003D21E3 /* FavToFirebase.swift in Sources */,
 				9D65403F2A40F0E500EDAE2C /* PersonViewController.swift in Sources */,
 				9D6540292A40EF1D00EDAE2C /* AppDelegate.swift in Sources */,
 				9D6540872A430F2200EDAE2C /* TilesName.swift in Sources */,
 				9D6540832A42FABF00EDAE2C /* StorageDownload.swift in Sources */,
+				9DDC928C2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift in Sources */,
 				9D65408D2A4353D700EDAE2C /* CatalogViewControllerWardrobes.swift in Sources */,
 				9D6540412A40F0EE00EDAE2C /* SettingsViewController.swift in Sources */,
 				9D6540452A40F88B00EDAE2C /* CatalogHeaderView.swift in Sources */,

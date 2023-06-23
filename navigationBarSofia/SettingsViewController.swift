@@ -1,9 +1,3 @@
-//
-//  SettingsViewController.swift
-//  navigationBarSofia
-//
-//  Created by Илья Горяев on 19.06.2023.
-//
 
 import UIKit
 

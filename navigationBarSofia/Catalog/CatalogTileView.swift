@@ -1,5 +1,5 @@
 import UIKit
-
+import Firebase
 
 class CatalogTileView: UIViewController{
     
@@ -7,13 +7,28 @@ class CatalogTileView: UIViewController{
     
     let label = UILabel()
     
+    let labelDescription = UILabel()
+    
     let favButton = makeFuvButton(text: "Избранное")
     
-    init(_ text: String, _ image: String){
+    init(_ text: String, _ textDescription: String, _ image: String){
         super.init(nibName: nil, bundle: nil)
         self.image.image = UIImage(named: image)
         self.image.contentMode = .scaleToFill
         self.label.text = text
+        self.labelDescription.text = textDescription
+        self.labelDescription.numberOfLines = 0
+        downloadFromFirebase { array in
+            for name in array{
+                
+                if self.label.text! == name{
+                    
+                    self.favButton.setImage(UIImage(named: "HeartRed3"), for: .normal)
+                    
+                }
+                
+            }
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -23,7 +38,7 @@ class CatalogTileView: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = .systemGray5
         favButton.addTarget(self, action: #selector(onClickFavButton), for: .touchUpInside)
         
         layout()
@@ -31,14 +46,20 @@ class CatalogTileView: UIViewController{
         
     }
     
+    
     @objc func onClickFavButton(){
-        if self.favButton.image(for: .normal) == UIImage(named: "heartFill"){
+        if self.favButton.image(for: .normal) == UIImage(named: "HeartRed3"){
             
             self.favButton.setImage(UIImage(named: "Heart"), for: .normal)
+            FavoritesToFirebase.FavoritesSave.deleteFromFirebase(name: label.text!)
+            
+            
+            
+            
             
         } else {
-            self.favButton.setImage(UIImage(named: "heartFill"), for: .normal)
-            
+            self.favButton.setImage(UIImage(named: "HeartRed3"), for: .normal)
+            FavoritesToFirebase.FavoritesSave.saveToFirebase(name: label.text!)
         }
     }
     
@@ -56,6 +77,8 @@ extension CatalogTileView{
         image.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
         favButton.translatesAutoresizingMaskIntoConstraints = false
+        labelDescription.translatesAutoresizingMaskIntoConstraints = false
+        
         
         
     }
@@ -67,6 +90,8 @@ extension CatalogTileView{
         view.addSubview(image)
         view.addSubview(label)
         view.addSubview(favButton)
+        view.addSubview(labelDescription)
+        
         
         NSLayoutConstraint.activate([
             
@@ -82,11 +107,16 @@ extension CatalogTileView{
             
             favButton.topAnchor.constraint(equalTo: image.topAnchor, constant: 8),
             favButton.trailingAnchor.constraint(equalTo: image.trailingAnchor, constant: -8),
+            
             favButton.heightAnchor.constraint(equalToConstant: 40),
             favButton.widthAnchor.constraint(equalToConstant: 40),
             
+            labelDescription.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 8),
+            labelDescription.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
             
-            view.heightAnchor.constraint(equalToConstant: 300)
+            
+            
+            view.heightAnchor.constraint(equalToConstant: 350)
             
             
             

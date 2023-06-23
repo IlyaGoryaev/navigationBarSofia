@@ -1,4 +1,6 @@
 import Foundation
+import UIKit
+
 
 class PicturesFromFirebseToTiles{
     
@@ -9,23 +11,22 @@ class PicturesFromFirebseToTiles{
         
         var tiles: [CatalogTileView] = []
         
+        let description: String = "Стоимость этой кухни: 26000 руб"
+        
         for i in 0...TilesNames.tilesNames.count - 1{
             
-            tiles.append(CatalogTileView(TilesNames.tilesNames[i], "Лайм"))
+            tiles.append(CatalogTileView(TilesNames.tilesNames[i], description, "Лайм"))
             
             FirebaseDownload.shared.getPicture(name: TilesNames.tilesNames[i] + ".jpg", nameFolder: nameFolder) { pic in
                 
                 tiles[i].image.image = pic
                 
             }
-                    
-            
             
         }
         
         return tiles
         
     }
-    
     
 }

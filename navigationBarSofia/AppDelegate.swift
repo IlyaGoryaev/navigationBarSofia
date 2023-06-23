@@ -8,6 +8,8 @@ import FirebaseCore
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -19,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-        let catalogVC = CatalogViewControllerKitchens( )
+        
+        let catalogVC = CatalogViewControllerKitchens()
         let personVC = PersonViewController()
         let settingsVC = SettingsViewController()
         

@@ -11,7 +11,13 @@ class CatalogHeaderView: UIView{
     
     let favButton = UIButton()
     
+    let viewLine = UIView()
+    
     let catalogButton2 = UIButton()
+    
+    var viewLineConstraint: NSLayoutConstraint?
+    
+    var viewLineConstraintLeading: NSLayoutConstraint?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -34,6 +40,7 @@ extension CatalogHeaderView{
         catalogLabel.translatesAutoresizingMaskIntoConstraints = false
         catalogLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         catalogLabel.text = "Каталог"
+        catalogLabel.font = UIFont(name: "Avenir Heavy", size: 38)
         catalogLabel.numberOfLines = 0
         catalogLabel.lineBreakMode = .byWordWrapping
         
@@ -49,8 +56,9 @@ extension CatalogHeaderView{
         catalogButton2.setTitleColor(.label, for: .normal)
         catalogButton2.setTitle("Шкафы-купе", for: .normal)
         
-        
-        
+        viewLine.translatesAutoresizingMaskIntoConstraints = false
+        viewLine.backgroundColor = .systemRed
+
         
     }
     
@@ -60,9 +68,13 @@ extension CatalogHeaderView{
         addSubview(catalogButton1)
         addSubview(favButton)
         addSubview(catalogButton2)
+        addSubview(viewLine)
         
+        viewLineConstraint = viewLine.widthAnchor.constraint(equalToConstant: 68)
+        viewLineConstraintLeading = viewLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15)
         NSLayoutConstraint.activate([
-            catalogLabel.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1),
+            //catalogLabel.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1),
+            catalogLabel.topAnchor.constraint(equalTo: topAnchor, constant: 60),
             catalogLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
             trailingAnchor.constraint(equalToSystemSpacingAfter: catalogLabel.trailingAnchor, multiplier: 1),
             
@@ -74,6 +86,11 @@ extension CatalogHeaderView{
             catalogButton2.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: CGFloat(catalogButton1.titleLabel!.text!.count + 8)),
             bottomAnchor.constraint(equalToSystemSpacingBelow: catalogButton2.bottomAnchor, multiplier: 1),
             
+            viewLine.bottomAnchor.constraint(equalTo: bottomAnchor),
+            viewLineConstraintLeading!,
+            viewLine.heightAnchor.constraint(equalToConstant: 5),
+            viewLineConstraint!,
+
             favButton.topAnchor.constraint(equalToSystemSpacingBelow: catalogLabel.bottomAnchor, multiplier: 2),
             favButton.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: CGFloat(catalogButton1.titleLabel!.text!.count) + CGFloat(catalogButton2.titleLabel!.text!.count) + 16),
             bottomAnchor.constraint(equalToSystemSpacingBelow: favButton.bottomAnchor, multiplier: 1)

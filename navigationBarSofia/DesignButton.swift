@@ -6,6 +6,7 @@ func makeFuvButton(text: String) -> UIButton{
     
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setImage(UIImage(named: "Heart"), for: .normal)
+    
     button.titleLabel?.adjustsFontSizeToFitWidth = true
 
     return button
