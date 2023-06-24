@@ -1,11 +1,14 @@
 import UIKit
 import Firebase
+import QuartzCore
 
 class CatalogTileView: UIViewController{
     
-    let image = UIImageView()
+    let detailView = DetailView()
     
     let label = UILabel()
+    
+    let imageButton = UIButton()
     
     let labelDescription = UILabel()
     
@@ -13,11 +16,18 @@ class CatalogTileView: UIViewController{
     
     init(_ text: String, _ textDescription: String, _ image: String){
         super.init(nibName: nil, bundle: nil)
-        self.image.image = UIImage(named: image)
-        self.image.contentMode = .scaleToFill
+        self.imageButton.setImage(UIImage(named: image), for: .normal)
+        self.imageButton.imageView?.contentMode = .scaleToFill
         self.label.text = text
+        
+        imageButton.addTarget(self, action: #selector(pushToDetailController), for: .touchUpInside)
+        
         self.labelDescription.text = textDescription
         self.labelDescription.numberOfLines = 0
+        
+        
+        
+        
         downloadFromFirebase { array in
             for name in array{
                 
@@ -29,6 +39,9 @@ class CatalogTileView: UIViewController{
                 
             }
         }
+        
+        
+        
     }
     
     required init?(coder: NSCoder) {
@@ -38,7 +51,8 @@ class CatalogTileView: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray5
+        view.backgroundColor = .systemGray6
+        
         favButton.addTarget(self, action: #selector(onClickFavButton), for: .touchUpInside)
         
         layout()
@@ -74,11 +88,16 @@ extension CatalogTileView{
     
     func style(){
         
-        image.translatesAutoresizingMaskIntoConstraints = false
+        imageButton.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
         favButton.translatesAutoresizingMaskIntoConstraints = false
         labelDescription.translatesAutoresizingMaskIntoConstraints = false
+        imageButton.imageView?.layer.cornerRadius = 20
+        imageButton.imageView?.clipsToBounds = true
         
+        label.font = UIFont(name: "Avenir Heavy", size: 18)
+        
+        labelDescription.font = UIFont(name: "Avenir", size: 16)
         
         
     }
@@ -87,7 +106,7 @@ extension CatalogTileView{
     
     func layout(){
                 
-        view.addSubview(image)
+        view.addSubview(imageButton)
         view.addSubview(label)
         view.addSubview(favButton)
         view.addSubview(labelDescription)
@@ -96,27 +115,28 @@ extension CatalogTileView{
         NSLayoutConstraint.activate([
             
             
-            label.topAnchor.constraint(equalTo: view.topAnchor, constant: 8),
+            imageButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 8),
+            imageButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            imageButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+            imageButton.heightAnchor.constraint(equalToConstant: 300),
+            
+            label.topAnchor.constraint(equalTo: imageButton.bottomAnchor, constant: 8),
+            
             label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+        
             
+            favButton.topAnchor.constraint(equalTo: imageButton.topAnchor, constant: 15),
+            favButton.trailingAnchor.constraint(equalTo: imageButton.trailingAnchor, constant: -15),
             
-            image.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 8),
-            image.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-            image.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
-            image.heightAnchor.constraint(equalToConstant: 240),
+            favButton.heightAnchor.constraint(equalToConstant: 30),
+            favButton.widthAnchor.constraint(equalToConstant: 30),
             
-            favButton.topAnchor.constraint(equalTo: image.topAnchor, constant: 8),
-            favButton.trailingAnchor.constraint(equalTo: image.trailingAnchor, constant: -8),
-            
-            favButton.heightAnchor.constraint(equalToConstant: 40),
-            favButton.widthAnchor.constraint(equalToConstant: 40),
-            
-            labelDescription.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 8),
+            labelDescription.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 8),
             labelDescription.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            labelDescription.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
             
-            
-            
-            view.heightAnchor.constraint(equalToConstant: 350)
+            labelDescription.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8)
+
             
             
             

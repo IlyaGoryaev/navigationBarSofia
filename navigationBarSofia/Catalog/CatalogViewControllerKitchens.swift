@@ -6,10 +6,7 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
     
     let headerView = CatalogHeaderView()
     var headerViewTopConstraints: NSLayoutConstraint?
-    
-    var isButtonTapped1: Bool = true
-    var isButtonTapped2: Bool = false
-    var isFavButtonTapped: Bool = false
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,17 +14,23 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
         
         
         
-        view.backgroundColor = .systemGray5
+        view.backgroundColor = .systemGray6
+        
         title = "Catalog"
         headerView.backgroundColor = .white
         
         headerView.catalogButton2.addTarget(self, action: #selector(onClickCatalogButton2), for: .touchUpInside)
+        
         headerView.catalogButton1.addTarget(self, action: #selector(onClickCatalogButton1), for: .touchUpInside)
+        
         headerView.favButton.addTarget(self, action: #selector(onClickFavButton), for: .touchUpInside)
         
         headerView.catalogButton1.titleLabel?.font = UIFont(name: "Avenir Heavy", size: 20)
-                
+        
+                        
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: "cellId")
+                
+        collectionView.showsHorizontalScrollIndicator = false
         
         
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout{
@@ -42,17 +45,11 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
         style()
         layout()
         
+        
     }
-
     
     @objc func onClickCatalogButton2(){
         
-        
-        isButtonTapped1 = false
-        isButtonTapped2 = true
-        isFavButtonTapped = false
-        self.headerView.viewLineConstraint?.constant = 130
-        self.headerView.viewLineConstraintLeading?.constant = 101
         collectionView.isPagingEnabled = false
         scrollToMenuIndex(menuIndex: 1)
         collectionView.isPagingEnabled = true
@@ -62,19 +59,15 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
         
         
         
-        
     }
     
     @objc func onClickCatalogButton1(){
         
-        isButtonTapped1 = true
-        isButtonTapped2 = false
-        isFavButtonTapped = false
-        self.headerView.viewLineConstraint?.constant = 68
-        self.headerView.viewLineConstraintLeading?.constant = 15
+        
         collectionView.isPagingEnabled = false
         scrollToMenuIndex(menuIndex: 0)
         collectionView.isPagingEnabled = true
+        
         UIView.animate(withDuration: 0.3) {
             self.headerView.layoutIfNeeded()
         }
@@ -86,64 +79,50 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
     
     @objc func onClickFavButton(){
         
-        isButtonTapped1 = false
-        isButtonTapped2 = false
-        isFavButtonTapped = true
-        self.headerView.viewLineConstraint?.constant = 115
-        self.headerView.viewLineConstraintLeading?.constant = 245
         collectionView.isPagingEnabled = false
         scrollToMenuIndex(menuIndex: 2)
         collectionView.isPagingEnabled = true
+        
         UIView.animate(withDuration: 0.3) {
             self.headerView.layoutIfNeeded()
-            
-            
-            
         }
-        
-        
-        
     }
+    
+    
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset)
 
-        if (scrollView.contentOffset.x > 280) && (scrollView.contentOffset.x <= 680){
+        if scrollView.contentOffset.x > 280{
             headerView.viewLineConstraint?.constant = 130
             self.headerView.viewLineConstraintLeading?.constant = 101
             headerView.catalogButton1.titleLabel?.font = UIFont(name: "Avenir", size: 18)
             headerView.catalogButton2.titleLabel?.font = UIFont(name: "Avenir Heavy", size: 20)
             headerView.favButton.titleLabel?.font = UIFont(name: "Avenir", size: 18)
-            print(isButtonTapped1)
-            print(isButtonTapped2)
-            print(isFavButtonTapped)
+            
         }
         
         if scrollView.contentOffset.x < 280{
-            headerView.viewLineConstraint?.constant = 68
+            headerView.viewLineConstraint?.constant = 64
             self.headerView.viewLineConstraintLeading?.constant = 15
             headerView.catalogButton1.titleLabel?.font = UIFont(name: "Avenir Heavy", size: 20)
             headerView.catalogButton2.titleLabel?.font = UIFont(name: "Avenir", size: 18)
             headerView.favButton.titleLabel?.font = UIFont(name: "Avenir", size: 18)
-            print(isButtonTapped1)
-            print(isButtonTapped2)
-            print(isFavButtonTapped)
         }
         if scrollView.contentOffset.x > 680{
-            headerView.viewLineConstraint?.constant = 115
+            headerView.viewLineConstraint?.constant = 112
             headerView.viewLineConstraintLeading?.constant = 245
             headerView.catalogButton1.titleLabel?.font = UIFont(name: "Avenir", size: 18)
             headerView.catalogButton2.titleLabel?.font = UIFont(name: "Avenir", size: 18)
             headerView.favButton.titleLabel?.font = UIFont(name: "Avenir Heavy", size: 20)
-            print(isButtonTapped1)
-            print(isButtonTapped2)
-            print(isFavButtonTapped)
         }
         UIView.animate(withDuration: 0.3) {
             self.headerView.layoutIfNeeded()
         }
         
     }
+    
+    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         3
@@ -152,13 +131,11 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
-        
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSizeMake(view.frame.width, 800)
+        return CGSizeMake(view.frame.width, view.frame.height - headerView.frame.height - tabBarController!.tabBar.frame.height)
     }
     
     func scrollToMenuIndex(menuIndex: Int){
@@ -193,7 +170,7 @@ extension CatalogViewControllerKitchens{
         view.addSubview(headerView)
         
         
-        headerViewTopConstraints = headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -60)
+        headerViewTopConstraints = headerView.topAnchor.constraint(equalTo: view.topAnchor)
         
         NSLayoutConstraint.activate([
             headerViewTopConstraints!,
@@ -237,10 +214,10 @@ extension CatalogViewControllerKitchens{
     }
 }
 //MARK: TableView
-
-extension CatalogViewControllerKitchens: UIScrollViewDelegate{
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-     let y = scrollView.contentOffset.y
+*/
+/*extension CatalogViewControllerKitchens{
+    func scrollViewDidScroll() {
+     let y = collscrollView.contentOffset.y
      
      
      let swipingDown = y <= 0

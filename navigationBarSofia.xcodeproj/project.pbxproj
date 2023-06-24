@@ -51,6 +51,9 @@
 		9DDC92882A449E79003D21E3 /* FavToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC92872A449E79003D21E3 /* FavToFirebase.swift */; };
 		9DDC928C2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC928B2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift */; };
 		9DF4E25F2A45971C001CA9F3 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E25E2A45971C001CA9F3 /* FeedCell.swift */; };
+		9DF4E2632A471204001CA9F3 /* PushToDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2622A471204001CA9F3 /* PushToDetailController.swift */; };
+		9DF4E2652A471442001CA9F3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2642A471442001CA9F3 /* DetailViewController.swift */; };
+		9DF4E2672A47834D001CA9F3 /* BlackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2662A47834D001CA9F3 /* BlackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +76,9 @@
 		9DDC92872A449E79003D21E3 /* FavToFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavToFirebase.swift; sourceTree = "<group>"; };
 		9DDC928B2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadFavoritesFromDatabase.swift; sourceTree = "<group>"; };
 		9DF4E25E2A45971C001CA9F3 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		9DF4E2622A471204001CA9F3 /* PushToDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushToDetailController.swift; sourceTree = "<group>"; };
+		9DF4E2642A471442001CA9F3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9DF4E2662A47834D001CA9F3 /* BlackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +161,9 @@
 				9D6540422A40F65500EDAE2C /* CatalogViewControllerKitchens.swift */,
 				9DF4E25E2A45971C001CA9F3 /* FeedCell.swift */,
 				9D65407D2A42E1F500EDAE2C /* CatalogTileView.swift */,
+				9DF4E2662A47834D001CA9F3 /* BlackView.swift */,
+				9DF4E2642A471442001CA9F3 /* DetailViewController.swift */,
+				9DF4E2622A471204001CA9F3 /* PushToDetailController.swift */,
 				9DDC92872A449E79003D21E3 /* FavToFirebase.swift */,
 				9D6540882A43111A00EDAE2C /* PicturesFromFirebaseToTiles.swift */,
 				9D6540862A430F2200EDAE2C /* TilesName.swift */,
@@ -272,8 +281,11 @@
 				9D65403D2A40F0DD00EDAE2C /* ViewController.swift in Sources */,
 				9DDC92882A449E79003D21E3 /* FavToFirebase.swift in Sources */,
 				9D65403F2A40F0E500EDAE2C /* PersonViewController.swift in Sources */,
+				9DF4E2652A471442001CA9F3 /* DetailViewController.swift in Sources */,
 				9DF4E25F2A45971C001CA9F3 /* FeedCell.swift in Sources */,
 				9D6540292A40EF1D00EDAE2C /* AppDelegate.swift in Sources */,
+				9DF4E2632A471204001CA9F3 /* PushToDetailController.swift in Sources */,
+				9DF4E2672A47834D001CA9F3 /* BlackView.swift in Sources */,
 				9D6540872A430F2200EDAE2C /* TilesName.swift in Sources */,
 				9D6540832A42FABF00EDAE2C /* StorageDownload.swift in Sources */,
 				9DDC928C2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift in Sources */,

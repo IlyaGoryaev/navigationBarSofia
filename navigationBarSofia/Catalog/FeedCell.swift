@@ -16,7 +16,7 @@ class FeedCell: UICollectionViewCell, UIScrollViewDelegate{
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
-        backgroundColor = .systemGray5
+        backgroundColor = .systemGray6
         
         
         style()
@@ -44,9 +44,9 @@ extension FeedCell{
                 
         stackView.spacing = 8
                 
-        stackView.backgroundColor = .systemGray5
+        stackView.backgroundColor = .white
                 
-        scrollView.backgroundColor = .systemGray5
+        scrollView.backgroundColor = .white
         
         
         
@@ -63,15 +63,19 @@ extension FeedCell{
                for tile in tiles{
                    
                    stackView.addArrangedSubview(tile.view)
+                   tile.view.layer.shadowOpacity = 0.1
+                   
+    
+                   
                    
                }
                
                NSLayoutConstraint.activate([
                    
-                   scrollView.topAnchor.constraint(equalTo: topAnchor, constant: 110),
-                   scrollView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-                   scrollView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-                   scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -100),
+                   scrollView.topAnchor.constraint(equalTo: topAnchor),
+                   scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                   scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+                   scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
                    
                    
                    stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
@@ -91,14 +95,14 @@ extension FeedCell{
     
     
 }
-/*extension FeedCell{
+extension FeedCell{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
      let y = scrollView.contentOffset.y
-     
+     /*
      
      let swipingDown = y <= 0
      let shouldSnap = y > 30
-     let labelHeight = headerView.catalogLabel.frame.height + 20
+     //let labelHeight = headerView.catalogLabel.frame.height + 20
      
      UIView.animate(withDuration: 0.3){
      
@@ -112,7 +116,7 @@ extension FeedCell{
      self.headerViewTopConstraints?.constant = shouldSnap ? -labelHeight : 0
      self.view.layoutIfNeeded()
      
-     })
+     })*/
     }
 }
-*/
+

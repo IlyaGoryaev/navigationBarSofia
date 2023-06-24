@@ -12,7 +12,7 @@ class CatalogHeaderView: UIView{
     let favButton = UIButton()
     
     let viewLine = UIView()
-    
+            
     let catalogButton2 = UIButton()
     
     var viewLineConstraint: NSLayoutConstraint?
@@ -58,8 +58,7 @@ extension CatalogHeaderView{
         
         viewLine.translatesAutoresizingMaskIntoConstraints = false
         viewLine.backgroundColor = .systemRed
-
-        
+    
     }
     
     
@@ -70,7 +69,8 @@ extension CatalogHeaderView{
         addSubview(catalogButton2)
         addSubview(viewLine)
         
-        viewLineConstraint = viewLine.widthAnchor.constraint(equalToConstant: 68)
+        
+        viewLineConstraint = viewLine.widthAnchor.constraint(equalToConstant: 64)
         viewLineConstraintLeading = viewLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15)
         NSLayoutConstraint.activate([
             catalogLabel.topAnchor.constraint(equalTo: topAnchor, constant: 60),
@@ -84,11 +84,12 @@ extension CatalogHeaderView{
             catalogButton2.topAnchor.constraint(equalToSystemSpacingBelow: catalogLabel.bottomAnchor, multiplier: 2),
             catalogButton2.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: CGFloat(catalogButton1.titleLabel!.text!.count + 8)),
             bottomAnchor.constraint(equalToSystemSpacingBelow: catalogButton2.bottomAnchor, multiplier: 1),
-            
+
             viewLine.bottomAnchor.constraint(equalTo: bottomAnchor),
             viewLineConstraintLeading!,
             viewLine.heightAnchor.constraint(equalToConstant: 2),
             viewLineConstraint!,
+        
 
             favButton.topAnchor.constraint(equalToSystemSpacingBelow: catalogLabel.bottomAnchor, multiplier: 2),
             favButton.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: CGFloat(catalogButton1.titleLabel!.text!.count) + CGFloat(catalogButton2.titleLabel!.text!.count) + 16),

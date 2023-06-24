@@ -30,9 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let personNC = UINavigationController(rootViewController: personVC)
         let settingsNC = UINavigationController(rootViewController: settingsVC)
-        
-        
-        
+        let catalogNC = UINavigationController(rootViewController: catalogVC)
+            
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [catalogVC, personNC, settingsNC]
         tabBarController.view.backgroundColor = .red

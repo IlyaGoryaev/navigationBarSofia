@@ -11,7 +11,8 @@ class PicturesFromFirebseToTiles{
         
         var tiles: [CatalogTileView] = []
         
-        let description: String = "Стоимость этой кухни: 26000 руб"
+        let description: String = "Кухня с фасадами из пластика. Одним из самых популярных материалов для изготовления кухонных фасадов считается пластик. Благодаря эффектному внешнему виду, богатой палитре цветов и фактуры фасады из пластикасоздают оригинальные комбинации."
+
         
         for i in 0...TilesNames.tilesNames.count - 1{
             
@@ -19,7 +20,8 @@ class PicturesFromFirebseToTiles{
             
             FirebaseDownload.shared.getPicture(name: TilesNames.tilesNames[i] + ".jpg", nameFolder: nameFolder) { pic in
                 
-                tiles[i].image.image = pic
+                tiles[i].imageButton.setImage(pic, for: .normal)
+                tiles[1].imageButton.setImage(UIImage(named: "Лечче"), for: .normal)
                 
             }
             
