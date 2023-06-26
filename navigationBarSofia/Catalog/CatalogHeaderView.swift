@@ -7,6 +7,8 @@ class CatalogHeaderView: UIView{
     
     let catalogLabel = UILabel()
     
+    let button = UIButton()
+    
     let catalogButton1 = UIButton()
     
     let favButton = UIButton()
@@ -60,9 +62,13 @@ extension CatalogHeaderView{
         viewLine.translatesAutoresizingMaskIntoConstraints = false
         viewLine.backgroundColor = .systemRed
         
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("ewfwfw", for: .normal)
+        
+        button.addTarget(self, action: #selector(FeedCellFavorites.cellFavorites.insert), for: .touchUpInside)
+        
     
     }
-    
     
     func layout(){
         addSubview(catalogLabel)
@@ -70,7 +76,7 @@ extension CatalogHeaderView{
         addSubview(favButton)
         addSubview(catalogButton2)
         addSubview(viewLine)
-        
+        addSubview(button)
         
         viewLineConstraint = viewLine.widthAnchor.constraint(equalToConstant: 55)
         viewLineConstraintLeading = viewLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15)
@@ -91,6 +97,9 @@ extension CatalogHeaderView{
             viewLineConstraintLeading!,
             viewLine.heightAnchor.constraint(equalToConstant: 2),
             viewLineConstraint!,
+            
+            button.topAnchor.constraint(equalTo: topAnchor, constant: 70),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
         
 
             favButton.topAnchor.constraint(equalToSystemSpacingBelow: catalogLabel.bottomAnchor, multiplier: 2),

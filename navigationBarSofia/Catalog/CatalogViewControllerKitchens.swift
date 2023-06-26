@@ -3,8 +3,9 @@
 import UIKit
 
 class CatalogViewControllerKitchens: UICollectionViewController, UICollectionViewDelegateFlowLayout{
-    
+        
     let headerView = CatalogHeaderView()
+        
     var headerViewTopConstraints: NSLayoutConstraint?
 
     
@@ -65,6 +66,9 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
         UIView.animate(withDuration: 0.3) {
             self.headerView.layoutIfNeeded()
         }
+        
+        
+        
         
         
         

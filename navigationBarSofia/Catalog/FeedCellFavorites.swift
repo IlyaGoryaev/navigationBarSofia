@@ -1,57 +1,83 @@
 
 import UIKit
+import Firebase
 
-class FeedCellFavorites: UICollectionViewCell, UIScrollViewDelegate{
-
-
+class FeedCellFavorites: UICollectionViewCell{
     
+    static var cellFavorites = FeedCellFavorites()
     
-    let scrollView = UIScrollView()
-    let stackView = UIStackView()
+    var nameFavArray: [String] = []
     
+    var count: Int = 0
     
-    var tiles: [CatalogTileView] = []
+    let collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout.init())
+    let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
         
-    
     override init(frame: CGRect) {
-        super.init(frame: .zero)
-        TilesNames.tilesNames.append("1")
+        super.init(frame: frame)
         
-        TilesNames.tilesNames.append("2")
+        layout.scrollDirection = UICollectionView.ScrollDirection.vertical
         
-        TilesNames.tilesNames.append("3")
+        collectionView.setCollectionViewLayout(layout, animated: true)
         
-        backgroundColor = .systemGray6
+        collectionView.delegate = self
         
+        collectionView.dataSource = self
+                
+        collectionView.register(FavoritesCell.self, forCellWithReuseIdentifier: "FavoritesCellId")
         
         style()
-        layout()
+        
+        Layout()
+        
+        for name in TilesNames.tilesNames{
+            
+            if AppDelegate.defaults.integer(forKey: name) == 1{
+                
+                count += 1
+                
+                nameFavArray.append(name)
+                
+            }
+            
+        }
+        
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUpScrollView(){
-            scrollView.delegate = self
-        }
+    
+    
     
 }
 extension FeedCellFavorites{
     
     func style(){
+        collectionView.backgroundColor = .white
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-                
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        stackView.axis = .vertical
-                
-        stackView.spacing = 8
-                
-        stackView.backgroundColor = .white
-                
-        scrollView.backgroundColor = .white
+    }
+    
+    func Layout(){
+        
+        
+        self.addSubview(collectionView)
+        
+        NSLayoutConstraint.activate([
+            
+            collectionView.topAnchor.constraint(equalTo: topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        
+            
+        
+        
+        ])
         
         
         
@@ -59,65 +85,96 @@ extension FeedCellFavorites{
     
     
     
-    func layout(){
-        
-               addSubview(scrollView)
-               
-               scrollView.addSubview(stackView)
-                       
-               for tile in tiles{
-                   
-                   stackView.addArrangedSubview(tile.view)
-    
-               }
-               
-               NSLayoutConstraint.activate([
-                   
-                   scrollView.topAnchor.constraint(equalTo: topAnchor),
-                   scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                   scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                   scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-                   
-                   
-                   stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-                   stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-                   stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-                   stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-                   
-                   stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
-                   
-                   
-                   
-                   
-                  
-               ])
-        
-    }
     
     
 }
-extension FeedCellFavorites{
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-     let y = scrollView.contentOffset.y
-     /*
-     
-     let swipingDown = y <= 0
-     let shouldSnap = y > 30
-     //let labelHeight = headerView.catalogLabel.frame.height + 20
-     
-     UIView.animate(withDuration: 0.3){
-     
-     
-     
-     self.headerView.catalogLabel.alpha = swipingDown ? 1.0 : 0.0
-     
-     }
-     
-     UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, options: [], animations: {
-     self.headerViewTopConstraints?.constant = shouldSnap ? -labelHeight : 0
-     self.view.layoutIfNeeded()
-     
-     })*/
+extension FeedCellFavorites: UICollectionViewDelegate{
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        
+        
     }
+    
+    
+    
+}
+extension FeedCellFavorites: UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return count
+        
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoritesCellId", for: indexPath) as! FavoritesCell?{
+            
+            cell.backgroundColor = .white
+            
+            cell.label.text = nameFavArray[indexPath.row]
+            
+            FirebaseDownload.shared.getPicture(name: cell.label.text! + ".jpg", nameFolder: "Kitchens") { pic in
+                cell.imageView.image = pic
+            }
+            
+            cell.delegate = self
+            
+            return cell
+        }
+        
+        
+        
+        return UICollectionViewCell()
+        
+    }
+    
 }
 
+extension FeedCellFavorites: UICollectionViewDelegateFlowLayout{
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSizeMake(frame.width, 400)
+    }
+    
+    
+    
+}
+extension FeedCellFavorites: FavoritesCellDelegate{
+    
+    
+    @objc func insert() {
+        let indexPath = IndexPath(row: nameFavArray.count, section: 0)
+        
+        nameFavArray.append(TilesNames.tilesNames.randomElement()!)
+        count += 1
+        
+        collectionView.insertItems(at: [indexPath])
+    }
+    
+    func delete(cell: FavoritesCell) {
+        if let indexPath = collectionView.indexPath(for: cell){
+            count = count - 1
+            print(nameFavArray)
+            
+            
+            for i in 0...nameFavArray.count-1{
+                if nameFavArray[i] == cell.label.text!{
+                    nameFavArray.remove(at: i)
+                    break
+                }
+            }
+            
+            
+            
+            collectionView.deleteItems(at: [indexPath])
+            insert()
+            
+        }
+    }
+    
+    
+    
+    
+}

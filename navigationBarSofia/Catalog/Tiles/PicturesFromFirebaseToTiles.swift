@@ -4,8 +4,7 @@ import UIKit
 
 class PicturesFromFirebseToTiles{
     
-    static let tiles = PicturesFromFirebseToTiles()
-    
+    public static let tiles = PicturesFromFirebseToTiles()
     
     func initTiles(nameFolder: String) -> [CatalogTileView]{
         
@@ -22,11 +21,17 @@ class PicturesFromFirebseToTiles{
                 
                 tiles[i].imageButton.setImage(pic, for: .normal)
                 downloadFromFirebase { array in
+                    
+                    
+                    
                     for name in array{
+                        
                         
                         if tiles[i].label.text! == name{
                             
                             tiles[i].favButton.setImage(UIImage(named: "HeartRed3"), for: .normal)
+                            
+                            AppDelegate.defaults.set(1, forKey: name)
                             
                             tiles[i].loadingIndicator.stopAnimating()
                             tiles[i].loadingIndicator.isHidden = true
@@ -37,6 +42,8 @@ class PicturesFromFirebseToTiles{
                             tiles[i].labelDescription.isHidden = false
                             
                         }
+                        
+                        
                         
                     }
                     tiles[i].loadingIndicator.stopAnimating()

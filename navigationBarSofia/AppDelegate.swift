@@ -2,17 +2,20 @@
 
 import UIKit
 import FirebaseCore
-
+//https://stackoverflow.com/questions/31490358/how-to-delete-item-from-collection-view
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    static var defaults = UserDefaults.standard
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
+        
+        
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()

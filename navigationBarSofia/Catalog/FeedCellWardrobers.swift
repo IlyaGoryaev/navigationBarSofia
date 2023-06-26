@@ -24,7 +24,11 @@ class FeedCellWardrobes: UICollectionViewCell, UIScrollViewDelegate{
             tiles.append(CatalogTileView("\(i+1)", "ewsfwefwe", "\(i+1)"))
             
         }
+        
+        
         style()
+        
+        
         layout()
         
         

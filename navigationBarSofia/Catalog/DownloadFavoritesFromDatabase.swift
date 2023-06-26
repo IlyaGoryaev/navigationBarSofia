@@ -23,7 +23,6 @@ func downloadFromFirebase( completion: @escaping ([String]) -> Void){
         }
         
         
-        
         completion(favorites)
         
     }

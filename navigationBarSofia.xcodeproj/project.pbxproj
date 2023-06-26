@@ -68,6 +68,7 @@
 		9DF4E2832A488C13001CA9F3 /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2812A488C13001CA9F3 /* Entity+CoreDataProperties.swift */; };
 		9DF4E2862A489097001CA9F3 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2852A489097001CA9F3 /* CoreDataManager.swift */; };
 		9DF4E2892A48EDF5001CA9F3 /* Shiny in Frameworks */ = {isa = PBXBuildFile; productRef = 9DF4E2882A48EDF5001CA9F3 /* Shiny */; };
+		9DF4E28C2A49A5ED001CA9F3 /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E28B2A49A5ED001CA9F3 /* FavoritesCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		9DF4E2802A488C13001CA9F3 /* Entity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9DF4E2812A488C13001CA9F3 /* Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DF4E2852A489097001CA9F3 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		9DF4E28B2A49A5ED001CA9F3 /* FavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,15 +193,11 @@
 				9DDC928B2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift */,
 				9D6540422A40F65500EDAE2C /* CatalogViewControllerKitchens.swift */,
 				9DF4E25E2A45971C001CA9F3 /* FeedCellKitchens.swift */,
-				9D65407D2A42E1F500EDAE2C /* CatalogTileView.swift */,
 				9DF4E2792A483E36001CA9F3 /* FeedCellWardrobers.swift */,
 				9DF4E27B2A4840D0001CA9F3 /* FeedCellFavorites.swift */,
-				9DF4E2662A47834D001CA9F3 /* BlackView.swift */,
-				9DF4E2642A471442001CA9F3 /* DetailViewController.swift */,
-				9DF4E2622A471204001CA9F3 /* PushToDetailController.swift */,
+				9DF4E28B2A49A5ED001CA9F3 /* FavoritesCell.swift */,
+				9DF4E28A2A49A587001CA9F3 /* Tiles */,
 				9DDC92872A449E79003D21E3 /* FavToFirebase.swift */,
-				9D6540882A43111A00EDAE2C /* PicturesFromFirebaseToTiles.swift */,
-				9D6540862A430F2200EDAE2C /* TilesName.swift */,
 			);
 			path = Catalog;
 			sourceTree = "<group>";
@@ -226,6 +224,19 @@
 				9DF4E27D2A488728001CA9F3 /* DataModel.xcdatamodeld */,
 			);
 			path = DataModel;
+			sourceTree = "<group>";
+		};
+		9DF4E28A2A49A587001CA9F3 /* Tiles */ = {
+			isa = PBXGroup;
+			children = (
+				9DF4E2662A47834D001CA9F3 /* BlackView.swift */,
+				9D65407D2A42E1F500EDAE2C /* CatalogTileView.swift */,
+				9D6540862A430F2200EDAE2C /* TilesName.swift */,
+				9D6540882A43111A00EDAE2C /* PicturesFromFirebaseToTiles.swift */,
+				9DF4E2642A471442001CA9F3 /* DetailViewController.swift */,
+				9DF4E2622A471204001CA9F3 /* PushToDetailController.swift */,
+			);
+			path = Tiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +368,7 @@
 				9DF4E25F2A45971C001CA9F3 /* FeedCellKitchens.swift in Sources */,
 				9D6540292A40EF1D00EDAE2C /* AppDelegate.swift in Sources */,
 				9DF4E2632A471204001CA9F3 /* PushToDetailController.swift in Sources */,
+				9DF4E28C2A49A5ED001CA9F3 /* FavoritesCell.swift in Sources */,
 				9DF4E2672A47834D001CA9F3 /* BlackView.swift in Sources */,
 				9D6540872A430F2200EDAE2C /* TilesName.swift in Sources */,
 				9D6540832A42FABF00EDAE2C /* StorageDownload.swift in Sources */,
