@@ -40,13 +40,14 @@ extension CatalogHeaderView{
         catalogLabel.translatesAutoresizingMaskIntoConstraints = false
         catalogLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         catalogLabel.text = "Каталог"
-        catalogLabel.font = UIFont(name: "Avenir Heavy", size: 38)
+        catalogLabel.font = UIFont(name: "Inter-Bold", size: 22)
         catalogLabel.numberOfLines = 0
         catalogLabel.lineBreakMode = .byWordWrapping
         
         catalogButton1.translatesAutoresizingMaskIntoConstraints = false
         catalogButton1.setTitleColor(.label, for: .normal)
         catalogButton1.setTitle("Кухни", for: .normal)
+        catalogButton1.titleLabel?.font = UIFont(name: "Inter", size: 10)
         
         favButton.translatesAutoresizingMaskIntoConstraints = false
         favButton.setTitleColor(.label, for: .normal)
@@ -58,6 +59,7 @@ extension CatalogHeaderView{
         
         viewLine.translatesAutoresizingMaskIntoConstraints = false
         viewLine.backgroundColor = .systemRed
+        
     
     }
     
@@ -70,7 +72,7 @@ extension CatalogHeaderView{
         addSubview(viewLine)
         
         
-        viewLineConstraint = viewLine.widthAnchor.constraint(equalToConstant: 64)
+        viewLineConstraint = viewLine.widthAnchor.constraint(equalToConstant: 55)
         viewLineConstraintLeading = viewLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15)
         NSLayoutConstraint.activate([
             catalogLabel.topAnchor.constraint(equalTo: topAnchor, constant: 60),

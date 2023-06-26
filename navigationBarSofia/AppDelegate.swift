@@ -3,7 +3,6 @@
 import UIKit
 import FirebaseCore
 
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -30,20 +29,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let personNC = UINavigationController(rootViewController: personVC)
         let settingsNC = UINavigationController(rootViewController: settingsVC)
-        let catalogNC = UINavigationController(rootViewController: catalogVC)
             
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [catalogVC, personNC, settingsNC]
         tabBarController.view.backgroundColor = .red
         tabBarController.tabBar.backgroundColor = .white
-        
+        tabBarController.tabBar.isTranslucent = true
         
         
         window?.rootViewController = tabBarController
         
         return true
     }
-
 
 }
 

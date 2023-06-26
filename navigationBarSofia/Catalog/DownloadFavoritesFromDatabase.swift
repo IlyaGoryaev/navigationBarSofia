@@ -28,4 +28,3 @@ func downloadFromFirebase( completion: @escaping ([String]) -> Void){
         
     }
 }
-//completion: @escaping (String) -> Void

@@ -21,7 +21,31 @@ class PicturesFromFirebseToTiles{
             FirebaseDownload.shared.getPicture(name: TilesNames.tilesNames[i] + ".jpg", nameFolder: nameFolder) { pic in
                 
                 tiles[i].imageButton.setImage(pic, for: .normal)
-                tiles[1].imageButton.setImage(UIImage(named: "Лечче"), for: .normal)
+                downloadFromFirebase { array in
+                    for name in array{
+                        
+                        if tiles[i].label.text! == name{
+                            
+                            tiles[i].favButton.setImage(UIImage(named: "HeartRed3"), for: .normal)
+                            
+                            tiles[i].loadingIndicator.stopAnimating()
+                            tiles[i].loadingIndicator.isHidden = true
+                            tiles[i].imageButton.isHidden = false
+                            tiles[i].loadingViewLabel.isHidden = true
+                            tiles[i].loadingViewTextDescription.isHidden = true
+                            tiles[i].label.isHidden = false
+                            tiles[i].labelDescription.isHidden = false
+                            
+                        }
+                        
+                    }
+                    tiles[i].loadingIndicator.stopAnimating()
+                    tiles[i].imageButton.isHidden = false
+                    tiles[i].loadingViewLabel.isHidden = true
+                    tiles[i].loadingViewTextDescription.isHidden = true
+                    tiles[i].label.isHidden = false
+                    tiles[i].labelDescription.isHidden = false
+                }
                 
             }
             

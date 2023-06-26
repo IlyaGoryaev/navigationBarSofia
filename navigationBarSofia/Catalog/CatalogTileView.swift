@@ -1,12 +1,19 @@
 import UIKit
 import Firebase
 import QuartzCore
+import Shiny
 
 class CatalogTileView: UIViewController{
     
     let detailView = DetailView()
     
     let label = UILabel()
+    
+    let loadingIndicator = UIActivityIndicatorView()
+    
+    let loadingViewTextDescription = UIView()
+    
+    let loadingViewLabel = UIView()
     
     let imageButton = UIButton()
     
@@ -22,23 +29,10 @@ class CatalogTileView: UIViewController{
         
         imageButton.addTarget(self, action: #selector(pushToDetailController), for: .touchUpInside)
         
+        
+        
         self.labelDescription.text = textDescription
         self.labelDescription.numberOfLines = 0
-        
-        
-        
-        
-        downloadFromFirebase { array in
-            for name in array{
-                
-                if self.label.text! == name{
-                    
-                    self.favButton.setImage(UIImage(named: "HeartRed3"), for: .normal)
-                    
-                }
-                
-            }
-        }
         
         
         
@@ -51,9 +45,11 @@ class CatalogTileView: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = .white
         
         favButton.addTarget(self, action: #selector(onClickFavButton), for: .touchUpInside)
+        loadingIndicator.startAnimating()
+        imageButton.isHidden = true
         
         layout()
         style()
@@ -66,6 +62,8 @@ class CatalogTileView: UIViewController{
             
             self.favButton.setImage(UIImage(named: "HeartW"), for: .normal)
             FavoritesToFirebase.FavoritesSave.deleteFromFirebase(name: label.text!)
+            
+            
             
             
             
@@ -92,12 +90,24 @@ extension CatalogTileView{
         label.translatesAutoresizingMaskIntoConstraints = false
         favButton.translatesAutoresizingMaskIntoConstraints = false
         labelDescription.translatesAutoresizingMaskIntoConstraints = false
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
+        loadingViewLabel.translatesAutoresizingMaskIntoConstraints = false
+        loadingViewTextDescription.translatesAutoresizingMaskIntoConstraints = false
         imageButton.imageView?.layer.cornerRadius = 20
         imageButton.imageView?.clipsToBounds = true
         
-        label.font = UIFont(name: "Avenir Heavy", size: 18)
+        label.font = UIFont(name: "Inter", size: 18)
         
-        labelDescription.font = UIFont(name: "Avenir", size: 16)
+        labelDescription.font = UIFont(name: "Inter-Light", size: 15)
+        loadingViewLabel.backgroundColor = .systemGray4
+        loadingViewTextDescription.backgroundColor = .systemGray4
+        
+        loadingViewLabel.layer.cornerRadius = 7
+        loadingViewTextDescription.layer.cornerRadius = 15
+        
+        label.isHidden = true
+        
+        labelDescription.isHidden = true
         
         
     }
@@ -110,6 +120,9 @@ extension CatalogTileView{
         view.addSubview(label)
         view.addSubview(favButton)
         view.addSubview(labelDescription)
+        view.addSubview(loadingIndicator)
+        view.addSubview(loadingViewLabel)
+        view.addSubview(loadingViewTextDescription)
         
         
         NSLayoutConstraint.activate([
@@ -120,10 +133,17 @@ extension CatalogTileView{
             imageButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
             imageButton.heightAnchor.constraint(equalToConstant: 300),
             
-            label.topAnchor.constraint(equalTo: imageButton.bottomAnchor, constant: 8),
+            loadingIndicator.centerXAnchor.constraint(equalTo: imageButton.centerXAnchor),
+            loadingIndicator.centerYAnchor.constraint(equalTo: imageButton.centerYAnchor),
             
+            label.topAnchor.constraint(equalTo: imageButton.bottomAnchor, constant: 8),
             label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-        
+            
+            loadingViewLabel.topAnchor.constraint(equalTo: imageButton.bottomAnchor, constant: 8),
+            loadingViewLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            loadingViewLabel.trailingAnchor.constraint(equalTo: label.trailingAnchor),
+            loadingViewLabel.bottomAnchor.constraint(equalTo: label.bottomAnchor),
+            
             
             favButton.topAnchor.constraint(equalTo: imageButton.topAnchor, constant: 15),
             favButton.trailingAnchor.constraint(equalTo: imageButton.trailingAnchor, constant: -15),
@@ -135,7 +155,12 @@ extension CatalogTileView{
             labelDescription.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
             labelDescription.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
             
-            labelDescription.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8)
+            labelDescription.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8),
+            
+            loadingViewTextDescription.topAnchor.constraint(equalTo: labelDescription.topAnchor),
+            loadingViewTextDescription.leadingAnchor.constraint(equalTo: labelDescription.leadingAnchor),
+            loadingViewTextDescription.trailingAnchor.constraint(equalTo: labelDescription.trailingAnchor),
+            loadingViewTextDescription.bottomAnchor.constraint(equalTo: labelDescription.bottomAnchor)
 
             
             

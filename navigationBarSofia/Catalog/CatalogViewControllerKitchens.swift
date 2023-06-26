@@ -11,13 +11,12 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tabBarController!.tabBar.items![0].image = UIImage(systemName: "book")
         
-        
-        
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = .white
         
         title = "Catalog"
-        headerView.backgroundColor = .white
+        headerView.backgroundColor = .systemGray6
         
         headerView.catalogButton2.addTarget(self, action: #selector(onClickCatalogButton2), for: .touchUpInside)
         
@@ -25,10 +24,20 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
         
         headerView.favButton.addTarget(self, action: #selector(onClickFavButton), for: .touchUpInside)
         
-        headerView.catalogButton1.titleLabel?.font = UIFont(name: "Avenir Heavy", size: 20)
+        headerView.catalogButton1.titleLabel?.font = UIFont(name: "Inter-SemiBold", size: 18)
+        
+        headerView.catalogButton2.titleLabel?.font = UIFont(name: "Inter", size: 18)
+        
+        headerView.favButton.titleLabel?.font = UIFont(name: "Inter", size: 18)
+        headerView.catalogButton2.setTitleColor(.lightGray, for: .normal)
+        headerView.favButton.setTitleColor(.lightGray, for: .normal)
         
                         
-        collectionView.register(FeedCell.self, forCellWithReuseIdentifier: "cellId")
+        collectionView.register(FeedCellKitchens.self, forCellWithReuseIdentifier: "cellId")
+        
+        collectionView.register(FeedCellWardrobes.self, forCellWithReuseIdentifier: "cellIdWardrobes")
+        
+        collectionView.register(FeedCellFavorites.self, forCellWithReuseIdentifier: "cellIdFavorites")
                 
         collectionView.showsHorizontalScrollIndicator = false
         
@@ -94,29 +103,29 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
         print(scrollView.contentOffset)
 
         if scrollView.contentOffset.x > 280{
-            headerView.viewLineConstraint?.constant = 130
+            headerView.viewLineConstraint?.constant = 120
             self.headerView.viewLineConstraintLeading?.constant = 101
-            headerView.catalogButton1.titleLabel?.font = UIFont(name: "Avenir", size: 18)
-            headerView.catalogButton2.titleLabel?.font = UIFont(name: "Avenir Heavy", size: 20)
-            headerView.favButton.titleLabel?.font = UIFont(name: "Avenir", size: 18)
+            headerView.catalogButton2.setTitleColor(.black, for: .normal)
+            headerView.favButton.setTitleColor(.lightGray, for: .normal)
+            headerView.catalogButton1.setTitleColor(.lightGray, for: .normal)
             
         }
         
         if scrollView.contentOffset.x < 280{
-            headerView.viewLineConstraint?.constant = 64
+            headerView.viewLineConstraint?.constant = 55
             self.headerView.viewLineConstraintLeading?.constant = 15
-            headerView.catalogButton1.titleLabel?.font = UIFont(name: "Avenir Heavy", size: 20)
-            headerView.catalogButton2.titleLabel?.font = UIFont(name: "Avenir", size: 18)
-            headerView.favButton.titleLabel?.font = UIFont(name: "Avenir", size: 18)
+            headerView.catalogButton2.setTitleColor(.lightGray, for: .normal)
+            headerView.favButton.setTitleColor(.lightGray, for: .normal)
+            headerView.catalogButton1.setTitleColor(.black, for: .normal)
         }
         if scrollView.contentOffset.x > 680{
-            headerView.viewLineConstraint?.constant = 112
+            headerView.viewLineConstraint?.constant = 101
             headerView.viewLineConstraintLeading?.constant = 245
-            headerView.catalogButton1.titleLabel?.font = UIFont(name: "Avenir", size: 18)
-            headerView.catalogButton2.titleLabel?.font = UIFont(name: "Avenir", size: 18)
-            headerView.favButton.titleLabel?.font = UIFont(name: "Avenir Heavy", size: 20)
+            headerView.catalogButton2.setTitleColor(.lightGray, for: .normal)
+            headerView.favButton.setTitleColor(.black, for: .normal)
+            headerView.catalogButton1.setTitleColor(.lightGray, for: .normal)
         }
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.4) {
             self.headerView.layoutIfNeeded()
         }
         
@@ -130,8 +139,19 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
     
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
-        return cell
+        if indexPath.item == 0{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
+            return cell
+        }
+        if indexPath.item == 1{
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellIdWardrobes", for: indexPath)
+            return cell
+            
+        }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellIdFavorites", for: indexPath)
+            
+            return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

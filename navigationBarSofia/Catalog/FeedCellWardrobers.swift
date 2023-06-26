@@ -1,7 +1,8 @@
 
+
 import UIKit
 
-class FeedCell: UICollectionViewCell, UIScrollViewDelegate{
+class FeedCellWardrobes: UICollectionViewCell, UIScrollViewDelegate{
 
 
     
@@ -10,7 +11,7 @@ class FeedCell: UICollectionViewCell, UIScrollViewDelegate{
     let stackView = UIStackView()
     
     
-    var tiles = PicturesFromFirebseToTiles.tiles.initTiles(nameFolder: "Kitchens")
+    var tiles: [CatalogTileView] = []
         
     
     override init(frame: CGRect) {
@@ -18,9 +19,17 @@ class FeedCell: UICollectionViewCell, UIScrollViewDelegate{
         
         backgroundColor = .systemGray6
         
-        
+        for i in 0...2{
+            
+            tiles.append(CatalogTileView("\(i+1)", "ewsfwefwe", "\(i+1)"))
+            
+        }
         style()
         layout()
+        
+        
+        
+        
     }
     
     required init?(coder: NSCoder) {
@@ -32,7 +41,7 @@ class FeedCell: UICollectionViewCell, UIScrollViewDelegate{
         }
     
 }
-extension FeedCell{
+extension FeedCellWardrobes{
     
     func style(){
         
@@ -63,11 +72,7 @@ extension FeedCell{
                for tile in tiles{
                    
                    stackView.addArrangedSubview(tile.view)
-                   tile.view.layer.shadowOpacity = 0.1
-                   
     
-                   
-                   
                }
                
                NSLayoutConstraint.activate([
@@ -95,28 +100,3 @@ extension FeedCell{
     
     
 }
-extension FeedCell{
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-     let y = scrollView.contentOffset.y
-     /*
-     
-     let swipingDown = y <= 0
-     let shouldSnap = y > 30
-     //let labelHeight = headerView.catalogLabel.frame.height + 20
-     
-     UIView.animate(withDuration: 0.3){
-     
-     
-     
-     self.headerView.catalogLabel.alpha = swipingDown ? 1.0 : 0.0
-     
-     }
-     
-     UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, options: [], animations: {
-     self.headerViewTopConstraints?.constant = shouldSnap ? -labelHeight : 0
-     self.view.layoutIfNeeded()
-     
-     })*/
-    }
-}
-
