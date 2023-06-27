@@ -1,22 +1,8 @@
 import UIKit
 
-protocol FavoritesCellDelegate: AnyObject{
-    
-    func delete(cell: FavoritesCell)
-    
-    func insert()
-    
-}
-
-
-
-
-class FavoritesCell: UICollectionViewCell {
-    
+class KitchensCell: UICollectionViewCell {
     
     let imageView = UIImageView()
-    
-    weak var delegate: FavoritesCellDelegate?
     
     let favButton = makeFuvButton(text: "Избранное")
     
@@ -27,28 +13,45 @@ class FavoritesCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        
+        
         style()
         
         layout()
         
-        favButton.addTarget(self, action: #selector(deleteItem), for: .touchUpInside)
+        favButton.addTarget(self, action: #selector(onClickFavButton), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func deleteItem(){
-        
-        delegate?.delete(cell: self)
-        print(self.label.text!)
-        AppDelegate.defaults.removeObject(forKey: self.label.text!)
-        FavoritesToFirebase.FavoritesSave.deleteFromFirebase(name: self.label.text!)
-        
+    @objc func onClickFavButton(){
+        if self.favButton.image(for: .normal) == UIImage(named: "HeartRed3"){
+            
+            self.favButton.setImage(UIImage(named: "HeartW"), for: .normal)
+            FavoritesToFirebase.FavoritesSave.deleteFromFirebase(name: label.text!)
+            AppDelegate.defaults.removeObject(forKey: label.text!)
+            
+            
+            
+            
+            
+            
+        } else {
+            self.favButton.setImage(UIImage(named: "HeartRed3"), for: .normal)
+            FavoritesToFirebase.FavoritesSave.saveToFirebase(name: label.text!)
+            AppDelegate.defaults.set(1, forKey: label.text!)
+                    
+            FeedFavorites.cellFavorites.nameFavArray.append(label.text!)
+            FeedFavorites.cellFavorites.count += 1
+            
+        }
     }
     
+    
 }
-extension FavoritesCell{
+extension KitchensCell{
     
     func style(){
         
@@ -58,7 +61,8 @@ extension FavoritesCell{
         imageView.clipsToBounds = true
         favButton.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
-        favButton.setImage(UIImage(named: "HeartRed3"), for: .normal)
+        
+        
         descriptionLabel.text = "Кухня с фасадами из пластика. Одним из самых популярных материалов для изготовления кухонных фасадов считается пластик. Благодаря эффектному внешнему виду, богатой палитре цветов и фактуры фасады из пластикасоздают оригинальные комбинации."
         descriptionLabel.numberOfLines = 0
         descriptionLabel.font = UIFont(name: "Inter-Light", size: 15)

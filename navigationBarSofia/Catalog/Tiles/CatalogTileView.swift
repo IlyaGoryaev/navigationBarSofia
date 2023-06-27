@@ -73,19 +73,9 @@ class CatalogTileView: UIViewController{
             self.favButton.setImage(UIImage(named: "HeartRed3"), for: .normal)
             FavoritesToFirebase.FavoritesSave.saveToFirebase(name: label.text!)
             AppDelegate.defaults.set(1, forKey: label.text!)
-                        
-            
-            /*let indexPath = IndexPath(row: FeedCellFavorites.cellFavorites.nameFavArray.count, section: 0)
-
-            FeedCellFavorites.cellFavorites.nameFavArray.append(label.text!)
-            FeedCellFavorites.cellFavorites.count += 1
-            
-            FeedCellFavorites.cellFavorites.collectionView.insertItems(at: [indexPath])*/
-            
-            FeedCellFavorites.cellFavorites.nameFavArray.append(label.text!)
-            FeedCellFavorites.cellFavorites.count += 1
-            
-            //FeedCellFavorites.cellFavorites.insert()
+                    
+            FeedFavorites.cellFavorites.nameFavArray.append(label.text!)
+            FeedFavorites.cellFavorites.count += 1
             
         }
     }

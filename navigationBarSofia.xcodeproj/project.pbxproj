@@ -62,13 +62,20 @@
 		9DF4E2762A48276B001CA9F3 /* Inter Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DF4E2752A48276B001CA9F3 /* Inter Black.otf */; };
 		9DF4E2782A482E53001CA9F3 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF4E2772A482E53001CA9F3 /* Storyboard.storyboard */; };
 		9DF4E27A2A483E36001CA9F3 /* FeedCellWardrobers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2792A483E36001CA9F3 /* FeedCellWardrobers.swift */; };
-		9DF4E27C2A4840D0001CA9F3 /* FeedCellFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E27B2A4840D0001CA9F3 /* FeedCellFavorites.swift */; };
+		9DF4E27C2A4840D0001CA9F3 /* FeedFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E27B2A4840D0001CA9F3 /* FeedFavorites.swift */; };
 		9DF4E27F2A488728001CA9F3 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E27D2A488728001CA9F3 /* DataModel.xcdatamodeld */; };
 		9DF4E2822A488C13001CA9F3 /* Entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2802A488C13001CA9F3 /* Entity+CoreDataClass.swift */; };
 		9DF4E2832A488C13001CA9F3 /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2812A488C13001CA9F3 /* Entity+CoreDataProperties.swift */; };
 		9DF4E2862A489097001CA9F3 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2852A489097001CA9F3 /* CoreDataManager.swift */; };
 		9DF4E2892A48EDF5001CA9F3 /* Shiny in Frameworks */ = {isa = PBXBuildFile; productRef = 9DF4E2882A48EDF5001CA9F3 /* Shiny */; };
 		9DF4E28C2A49A5ED001CA9F3 /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E28B2A49A5ED001CA9F3 /* FavoritesCell.swift */; };
+		9DF4E2902A4AD6EB001CA9F3 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E28F2A4AD6EB001CA9F3 /* MainScreenViewController.swift */; };
+		9DF4E2922A4AD826001CA9F3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2912A4AD826001CA9F3 /* TabBarController.swift */; };
+		9DF4E2942A4ADB98001CA9F3 /* FavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2932A4ADB98001CA9F3 /* FavViewController.swift */; };
+		9DF4E2962A4ADFF2001CA9F3 /* FavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2952A4ADFF2001CA9F3 /* FavButton.swift */; };
+		9DF4E29A2A4AFE2D001CA9F3 /* FavoritesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2992A4AFE2D001CA9F3 /* FavoritesHeaderView.swift */; };
+		9DF4E29C2A4B1864001CA9F3 /* FeedCellCollectionViewKitchens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E29B2A4B1864001CA9F3 /* FeedCellCollectionViewKitchens.swift */; };
+		9DF4E29E2A4B2279001CA9F3 /* KitchensCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E29D2A4B2279001CA9F3 /* KitchensCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,12 +109,19 @@
 		9DF4E2752A48276B001CA9F3 /* Inter Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter Black.otf"; sourceTree = "<group>"; };
 		9DF4E2772A482E53001CA9F3 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		9DF4E2792A483E36001CA9F3 /* FeedCellWardrobers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellWardrobers.swift; sourceTree = "<group>"; };
-		9DF4E27B2A4840D0001CA9F3 /* FeedCellFavorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellFavorites.swift; sourceTree = "<group>"; };
+		9DF4E27B2A4840D0001CA9F3 /* FeedFavorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFavorites.swift; sourceTree = "<group>"; };
 		9DF4E27E2A488728001CA9F3 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		9DF4E2802A488C13001CA9F3 /* Entity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9DF4E2812A488C13001CA9F3 /* Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DF4E2852A489097001CA9F3 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		9DF4E28B2A49A5ED001CA9F3 /* FavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
+		9DF4E28F2A4AD6EB001CA9F3 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
+		9DF4E2912A4AD826001CA9F3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		9DF4E2932A4ADB98001CA9F3 /* FavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavViewController.swift; sourceTree = "<group>"; };
+		9DF4E2952A4ADFF2001CA9F3 /* FavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavButton.swift; sourceTree = "<group>"; };
+		9DF4E2992A4AFE2D001CA9F3 /* FavoritesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesHeaderView.swift; sourceTree = "<group>"; };
+		9DF4E29B2A4B1864001CA9F3 /* FeedCellCollectionViewKitchens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellCollectionViewKitchens.swift; sourceTree = "<group>"; };
+		9DF4E29D2A4B2279001CA9F3 /* KitchensCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitchensCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,7 +186,11 @@
 				9D65403C2A40F0DD00EDAE2C /* ViewController.swift */,
 				9D6540312A40EF1E00EDAE2C /* Assets.xcassets */,
 				9D65403E2A40F0E500EDAE2C /* PersonViewController.swift */,
+				9DF4E2932A4ADB98001CA9F3 /* FavViewController.swift */,
 				9D6540332A40EF1E00EDAE2C /* LaunchScreen.storyboard */,
+				9DF4E2952A4ADFF2001CA9F3 /* FavButton.swift */,
+				9DF4E28F2A4AD6EB001CA9F3 /* MainScreenViewController.swift */,
+				9DF4E2912A4AD826001CA9F3 /* TabBarController.swift */,
 				9D6540902A43741000EDAE2C /* DesignButton.swift */,
 				9DF4E2772A482E53001CA9F3 /* Storyboard.storyboard */,
 				9D6540822A42FABF00EDAE2C /* StorageDownload.swift */,
@@ -190,11 +208,14 @@
 			isa = PBXGroup;
 			children = (
 				9D6540442A40F88B00EDAE2C /* CatalogHeaderView.swift */,
+				9DF4E2992A4AFE2D001CA9F3 /* FavoritesHeaderView.swift */,
 				9DDC928B2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift */,
 				9D6540422A40F65500EDAE2C /* CatalogViewControllerKitchens.swift */,
 				9DF4E25E2A45971C001CA9F3 /* FeedCellKitchens.swift */,
+				9DF4E29B2A4B1864001CA9F3 /* FeedCellCollectionViewKitchens.swift */,
 				9DF4E2792A483E36001CA9F3 /* FeedCellWardrobers.swift */,
-				9DF4E27B2A4840D0001CA9F3 /* FeedCellFavorites.swift */,
+				9DF4E27B2A4840D0001CA9F3 /* FeedFavorites.swift */,
+				9DF4E29D2A4B2279001CA9F3 /* KitchensCell.swift */,
 				9DF4E28B2A49A5ED001CA9F3 /* FavoritesCell.swift */,
 				9DF4E28A2A49A587001CA9F3 /* Tiles */,
 				9DDC92872A449E79003D21E3 /* FavToFirebase.swift */,
@@ -351,19 +372,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DF4E29A2A4AFE2D001CA9F3 /* FavoritesHeaderView.swift in Sources */,
 				9D6540892A43111A00EDAE2C /* PicturesFromFirebaseToTiles.swift in Sources */,
+				9DF4E2922A4AD826001CA9F3 /* TabBarController.swift in Sources */,
 				9DF4E27F2A488728001CA9F3 /* DataModel.xcdatamodeld in Sources */,
 				9D6540432A40F65500EDAE2C /* CatalogViewControllerKitchens.swift in Sources */,
 				9D65407E2A42E1F500EDAE2C /* CatalogTileView.swift in Sources */,
 				9DF4E2832A488C13001CA9F3 /* Entity+CoreDataProperties.swift in Sources */,
+				9DF4E2902A4AD6EB001CA9F3 /* MainScreenViewController.swift in Sources */,
 				9D6540912A43741000EDAE2C /* DesignButton.swift in Sources */,
 				9DF4E2822A488C13001CA9F3 /* Entity+CoreDataClass.swift in Sources */,
+				9DF4E29E2A4B2279001CA9F3 /* KitchensCell.swift in Sources */,
 				9DF4E27A2A483E36001CA9F3 /* FeedCellWardrobers.swift in Sources */,
 				9DF4E2862A489097001CA9F3 /* CoreDataManager.swift in Sources */,
+				9DF4E2962A4ADFF2001CA9F3 /* FavButton.swift in Sources */,
 				9D65403D2A40F0DD00EDAE2C /* ViewController.swift in Sources */,
+				9DF4E2942A4ADB98001CA9F3 /* FavViewController.swift in Sources */,
 				9DDC92882A449E79003D21E3 /* FavToFirebase.swift in Sources */,
 				9D65403F2A40F0E500EDAE2C /* PersonViewController.swift in Sources */,
-				9DF4E27C2A4840D0001CA9F3 /* FeedCellFavorites.swift in Sources */,
+				9DF4E29C2A4B1864001CA9F3 /* FeedCellCollectionViewKitchens.swift in Sources */,
+				9DF4E27C2A4840D0001CA9F3 /* FeedFavorites.swift in Sources */,
 				9DF4E2652A471442001CA9F3 /* DetailViewController.swift in Sources */,
 				9DF4E25F2A45971C001CA9F3 /* FeedCellKitchens.swift in Sources */,
 				9D6540292A40EF1D00EDAE2C /* AppDelegate.swift in Sources */,

@@ -1,20 +1,21 @@
-
 import UIKit
-import Firebase
 
-class FeedCellFavorites: UICollectionViewCell{
+class FeedCellCollectionViewKitchens: UICollectionViewCell {
     
-    static var cellFavorites = FeedCellFavorites()
+    static let kitchens = FeedCellCollectionViewKitchens()
     
-    var nameFavArray: [String] = []
+    var nameFavArray: [String] = TilesNames.tilesNames
     
     var count: Int = 0
     
     let collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout.init())
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
-        
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        
         
         layout.scrollDirection = UICollectionView.ScrollDirection.vertical
         
@@ -24,24 +25,11 @@ class FeedCellFavorites: UICollectionViewCell{
         
         collectionView.dataSource = self
                 
-        collectionView.register(FavoritesCell.self, forCellWithReuseIdentifier: "FavoritesCellId")
+        collectionView.register(KitchensCell.self, forCellWithReuseIdentifier: "FavoritesCellId")
         
         style()
         
-        Layout()
-        
-        for name in TilesNames.tilesNames{
-            
-            if AppDelegate.defaults.integer(forKey: name) == 1{
-                
-                count += 1
-                
-                nameFavArray.append(name)
-                
-            }
-            
-        }
-        
+        layouT()
         
     }
     
@@ -51,20 +39,16 @@ class FeedCellFavorites: UICollectionViewCell{
     
     
     
-    
 }
-extension FeedCellFavorites{
+extension FeedCellCollectionViewKitchens{
     
     func style(){
         collectionView.backgroundColor = .white
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
-        
     }
     
-    func Layout(){
-        
-        
+    func layouT(){
         self.addSubview(collectionView)
         
         NSLayoutConstraint.activate([
@@ -72,10 +56,8 @@ extension FeedCellFavorites{
             collectionView.topAnchor.constraint(equalTo: topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        
-            
-        
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+         
         
         ])
         
@@ -83,44 +65,36 @@ extension FeedCellFavorites{
         
     }
     
-    
+}
+extension FeedCellCollectionViewKitchens: UICollectionViewDelegate{
     
     
     
 }
-extension FeedCellFavorites: UICollectionViewDelegate{
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
-        
-        
-    }
-    
-    
-    
-}
-extension FeedCellFavorites: UICollectionViewDataSource{
+extension FeedCellCollectionViewKitchens: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return count
-        
-        
+        nameFavArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoritesCellId", for: indexPath) as! FavoritesCell?{
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoritesCellId", for: indexPath) as! KitchensCell?{
             
             cell.backgroundColor = .white
             
             cell.label.text = nameFavArray[indexPath.row]
+            cell.label.font = UIFont(name: "Inter", size: 18)
+            if AppDelegate.defaults.value(forKey: cell.label.text!) as? Int == 1{
+                
+                cell.favButton.setImage(UIImage(named: "HeartRed3"), for: .normal)
+                
+            } else {
+                cell.favButton.setImage(UIImage(named: "HeartW"), for: .normal)
+            }
             
             FirebaseDownload.shared.getPicture(name: cell.label.text! + ".jpg", nameFolder: "Kitchens") { pic in
                 cell.imageView.image = pic
             }
-            
-            cell.delegate = self
-            
+                    
             return cell
         }
         
@@ -130,51 +104,30 @@ extension FeedCellFavorites: UICollectionViewDataSource{
         
     }
     
+    
+    
 }
 
-extension FeedCellFavorites: UICollectionViewDelegateFlowLayout{
+
+extension FeedCellCollectionViewKitchens: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSizeMake(frame.width, 400)
+        
+        return CGSizeMake(frame.width, 450)
+        
     }
     
     
     
 }
-extension FeedCellFavorites: FavoritesCellDelegate{
+extension FeedCellCollectionViewKitchens{
     
-    
-    @objc func insert() {
-        let indexPath = IndexPath(row: nameFavArray.count, section: 0)
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        nameFavArray.append(TilesNames.tilesNames.randomElement()!)
-        count += 1
-        
-        collectionView.insertItems(at: [indexPath])
+        //collectionView.reloadData()
+        //UserDefaults
     }
-    
-    func delete(cell: FavoritesCell) {
-        if let indexPath = collectionView.indexPath(for: cell){
-            count = count - 1
-            print(nameFavArray)
-            
-            
-            for i in 0...nameFavArray.count-1{
-                if nameFavArray[i] == cell.label.text!{
-                    nameFavArray.remove(at: i)
-                    break
-                }
-            }
-            
-            
-            
-            collectionView.deleteItems(at: [indexPath])
-            insert()
-            
-        }
-    }
-    
-    
     
     
 }
+

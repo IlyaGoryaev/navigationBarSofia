@@ -27,14 +27,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let catalogVC = CatalogViewControllerKitchens(collectionViewLayout: layout)
         let personVC = PersonViewController()
         let settingsVC = SettingsViewController()
-        
+        let mainVC = MainScreenViewController()
         
         
         let personNC = UINavigationController(rootViewController: personVC)
         let settingsNC = UINavigationController(rootViewController: settingsVC)
-            
+        let mainNC = UINavigationController(rootViewController: mainVC)
+        let catalogNC = UINavigationController(rootViewController: catalogVC)
+        catalogNC.navigationBar.isHidden = true
+        
+        
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [catalogVC, personNC, settingsNC]
+        tabBarController.viewControllers = [mainNC, catalogVC, personNC, settingsNC]
         tabBarController.view.backgroundColor = .red
         tabBarController.tabBar.backgroundColor = .white
         tabBarController.tabBar.isTranslucent = true

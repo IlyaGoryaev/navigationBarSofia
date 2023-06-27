@@ -7,12 +7,8 @@ class CatalogHeaderView: UIView{
     
     let catalogLabel = UILabel()
     
-    let button = UIButton()
-    
     let catalogButton1 = UIButton()
-    
-    let favButton = UIButton()
-    
+        
     let viewLine = UIView()
             
     let catalogButton2 = UIButton()
@@ -51,10 +47,6 @@ extension CatalogHeaderView{
         catalogButton1.setTitle("Кухни", for: .normal)
         catalogButton1.titleLabel?.font = UIFont(name: "Inter", size: 10)
         
-        favButton.translatesAutoresizingMaskIntoConstraints = false
-        favButton.setTitleColor(.label, for: .normal)
-        favButton.setTitle("Избранное", for: .normal)
-        
         catalogButton2.translatesAutoresizingMaskIntoConstraints = false
         catalogButton2.setTitleColor(.label, for: .normal)
         catalogButton2.setTitle("Шкафы-купе", for: .normal)
@@ -62,21 +54,14 @@ extension CatalogHeaderView{
         viewLine.translatesAutoresizingMaskIntoConstraints = false
         viewLine.backgroundColor = .systemRed
         
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("ewfwfw", for: .normal)
-        
-        button.addTarget(self, action: #selector(FeedCellFavorites.cellFavorites.insert), for: .touchUpInside)
-        
     
     }
     
     func layout(){
         addSubview(catalogLabel)
         addSubview(catalogButton1)
-        addSubview(favButton)
         addSubview(catalogButton2)
         addSubview(viewLine)
-        addSubview(button)
         
         viewLineConstraint = viewLine.widthAnchor.constraint(equalToConstant: 55)
         viewLineConstraintLeading = viewLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15)
@@ -98,13 +83,6 @@ extension CatalogHeaderView{
             viewLine.heightAnchor.constraint(equalToConstant: 2),
             viewLineConstraint!,
             
-            button.topAnchor.constraint(equalTo: topAnchor, constant: 70),
-            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-        
-
-            favButton.topAnchor.constraint(equalToSystemSpacingBelow: catalogLabel.bottomAnchor, multiplier: 2),
-            favButton.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: CGFloat(catalogButton1.titleLabel!.text!.count) + CGFloat(catalogButton2.titleLabel!.text!.count) + 16),
-            bottomAnchor.constraint(equalToSystemSpacingBelow: favButton.bottomAnchor, multiplier: 1)
         
         ])
         

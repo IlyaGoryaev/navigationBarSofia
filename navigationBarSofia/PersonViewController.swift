@@ -14,6 +14,8 @@ class PersonViewController: ViewController {
         style()
         layout()
         
+        
+                
     }
     
     override func commonInit() {

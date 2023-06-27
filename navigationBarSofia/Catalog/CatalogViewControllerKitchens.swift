@@ -5,41 +5,23 @@ import UIKit
 class CatalogViewControllerKitchens: UICollectionViewController, UICollectionViewDelegateFlowLayout{
         
     let headerView = CatalogHeaderView()
-        
-    var headerViewTopConstraints: NSLayoutConstraint?
-
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tabBarController!.tabBar.items![0].image = UIImage(systemName: "book")
+    let buttonFav = UIButton()
+                    
+    override init(collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(collectionViewLayout: layout)
         
         view.backgroundColor = .white
-        
         title = "Catalog"
         headerView.backgroundColor = .systemGray6
-        
         headerView.catalogButton2.addTarget(self, action: #selector(onClickCatalogButton2), for: .touchUpInside)
-        
         headerView.catalogButton1.addTarget(self, action: #selector(onClickCatalogButton1), for: .touchUpInside)
-        
-        headerView.favButton.addTarget(self, action: #selector(onClickFavButton), for: .touchUpInside)
-        
         headerView.catalogButton1.titleLabel?.font = UIFont(name: "Inter-SemiBold", size: 18)
-        
         headerView.catalogButton2.titleLabel?.font = UIFont(name: "Inter", size: 18)
-        
-        headerView.favButton.titleLabel?.font = UIFont(name: "Inter", size: 18)
         headerView.catalogButton2.setTitleColor(.lightGray, for: .normal)
-        headerView.favButton.setTitleColor(.lightGray, for: .normal)
-        
-                        
-        collectionView.register(FeedCellKitchens.self, forCellWithReuseIdentifier: "cellId")
-        
+        buttonFav.addTarget(self, action: #selector(tappedFavButton), for: .touchUpInside)
+        collectionView.register(FeedCellCollectionViewKitchens.self, forCellWithReuseIdentifier: "cellId")
         collectionView.register(FeedCellWardrobes.self, forCellWithReuseIdentifier: "cellIdWardrobes")
-        
-        collectionView.register(FeedCellFavorites.self, forCellWithReuseIdentifier: "cellIdFavorites")
-                
         collectionView.showsHorizontalScrollIndicator = false
         
         
@@ -53,10 +35,26 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
         collectionView.isPagingEnabled = true
                 
         style()
-        layout()
+        
+        self.layout()
         
         
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+    }
+    
+    
+    
+    
     
     @objc func onClickCatalogButton2(){
         
@@ -90,17 +88,6 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
         
     }
     
-    @objc func onClickFavButton(){
-        
-        collectionView.isPagingEnabled = false
-        scrollToMenuIndex(menuIndex: 2)
-        collectionView.isPagingEnabled = true
-        
-        UIView.animate(withDuration: 0.3) {
-            self.headerView.layoutIfNeeded()
-        }
-    }
-    
     
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -110,7 +97,6 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
             headerView.viewLineConstraint?.constant = 120
             self.headerView.viewLineConstraintLeading?.constant = 101
             headerView.catalogButton2.setTitleColor(.black, for: .normal)
-            headerView.favButton.setTitleColor(.lightGray, for: .normal)
             headerView.catalogButton1.setTitleColor(.lightGray, for: .normal)
             
         }
@@ -119,15 +105,7 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
             headerView.viewLineConstraint?.constant = 55
             self.headerView.viewLineConstraintLeading?.constant = 15
             headerView.catalogButton2.setTitleColor(.lightGray, for: .normal)
-            headerView.favButton.setTitleColor(.lightGray, for: .normal)
             headerView.catalogButton1.setTitleColor(.black, for: .normal)
-        }
-        if scrollView.contentOffset.x > 680{
-            headerView.viewLineConstraint?.constant = 101
-            headerView.viewLineConstraintLeading?.constant = 245
-            headerView.catalogButton2.setTitleColor(.lightGray, for: .normal)
-            headerView.favButton.setTitleColor(.black, for: .normal)
-            headerView.catalogButton1.setTitleColor(.lightGray, for: .normal)
         }
         UIView.animate(withDuration: 0.4) {
             self.headerView.layoutIfNeeded()
@@ -138,7 +116,7 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        2
     }
     
     
@@ -147,15 +125,9 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
             return cell
         }
-        if indexPath.item == 1{
             
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellIdWardrobes", for: indexPath)
-            return cell
-            
-        }
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellIdFavorites", for: indexPath)
-            
-            return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellIdWardrobes", for: indexPath)
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -182,22 +154,30 @@ extension CatalogViewControllerKitchens{
     
     func style(){
         headerView.translatesAutoresizingMaskIntoConstraints = false
-        
-        
+                
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
+        buttonFav.translatesAutoresizingMaskIntoConstraints = false
+        
+        buttonFav.backgroundColor = UIColor(red: 254.0 / 255.0, green: 116.0 / 255.0, blue: 96.0 / 255.0, alpha: 1.0)
+        
+        buttonFav.layer.cornerRadius =  30
+        
+        buttonFav.setImage(UIImage(named: "HeartWhite3"), for: .normal)
+        
+        buttonFav.imageView?.contentMode = .scaleAspectFit
+        
+                                
     }
     
     func layout(){
         
         
         view.addSubview(headerView)
-        
-        
-        headerViewTopConstraints = headerView.topAnchor.constraint(equalTo: view.topAnchor)
+        view.addSubview(buttonFav)
         
         NSLayoutConstraint.activate([
-            headerViewTopConstraints!,
+            headerView.topAnchor.constraint(equalTo: view.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
@@ -206,6 +186,11 @@ extension CatalogViewControllerKitchens{
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
+            buttonFav.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
+            buttonFav.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buttonFav.heightAnchor.constraint(equalToConstant: 60),
+            buttonFav.widthAnchor.constraint(equalToConstant: 60),
+        
             
            
         ])
@@ -213,53 +198,15 @@ extension CatalogViewControllerKitchens{
         
     }
 }
-/*extension FeedCell{
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-     let y = scrollView.contentOffset.y
-     
-     
-     let swipingDown = y <= 0
-     let shouldSnap = y > 30
-        let labelHeight = CatalogViewControllerKitchens.headerView.catalogLabel.frame.height + 20
-     
-     UIView.animate(withDuration: 0.3){
-     
-     
-     
-     self.headerView.catalogLabel.alpha = swipingDown ? 1.0 : 0.0
-     
-     }
-     
-     UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, options: [], animations: {
-     self.headerViewTopConstraints?.constant = shouldSnap ? -labelHeight : 0
-     self.view.layoutIfNeeded()
-     
-     })
+extension CatalogViewControllerKitchens{
+    
+    @objc func tappedFavButton(){
+        
+        let viewController = FeedFavorites()
+        viewController.view.backgroundColor = .systemGray6
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true)
     }
+    
+    
 }
-//MARK: TableView
-*/
-/*extension CatalogViewControllerKitchens{
-    func scrollViewDidScroll() {
-     let y = collscrollView.contentOffset.y
-     
-     
-     let swipingDown = y <= 0
-     let shouldSnap = y > 30
-     let labelHeight = headerView.catalogLabel.frame.height + 80
-     
-     UIView.animate(withDuration: 0.3){
-     
-     
-     
-     self.headerView.catalogLabel.alpha = swipingDown ? 1.0 : 0.0
-     
-     }
-     
-     UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, options: [], animations: {
-     self.headerViewTopConstraints?.constant = shouldSnap ? -labelHeight : -60
-     self.view.layoutIfNeeded()
-     
-     })
-    }
-}*/
