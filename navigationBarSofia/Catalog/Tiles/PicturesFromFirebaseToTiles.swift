@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 
-class PicturesFromFirebseToTiles{
+/*class PicturesFromFirebseToTiles{
     
     public static let tiles = PicturesFromFirebseToTiles()
     
@@ -63,3 +63,4 @@ class PicturesFromFirebseToTiles{
     }
     
 }
+*/

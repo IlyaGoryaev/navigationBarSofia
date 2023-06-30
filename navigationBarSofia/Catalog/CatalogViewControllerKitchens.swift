@@ -6,6 +6,9 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
         
     let headerView = CatalogHeaderView()
     
+    
+    static let kitchens = CatalogViewControllerKitchens(collectionViewLayout: UICollectionViewLayout())
+    
     let buttonFav = UIButton()
                     
     override init(collectionViewLayout layout: UICollectionViewLayout) {
@@ -21,7 +24,7 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
         headerView.catalogButton2.setTitleColor(.lightGray, for: .normal)
         buttonFav.addTarget(self, action: #selector(tappedFavButton), for: .touchUpInside)
         collectionView.register(FeedCellCollectionViewKitchens.self, forCellWithReuseIdentifier: "cellId")
-        collectionView.register(FeedCellWardrobes.self, forCellWithReuseIdentifier: "cellIdWardrobes")
+        //collectionView.register(FeedCellWardrobes.self, forCellWithReuseIdentifier: "cellIdWardrobes")
         collectionView.showsHorizontalScrollIndicator = false
         
         
@@ -98,7 +101,8 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
             self.headerView.viewLineConstraintLeading?.constant = 101
             headerView.catalogButton2.setTitleColor(.black, for: .normal)
             headerView.catalogButton1.setTitleColor(.lightGray, for: .normal)
-            
+            headerView.catalogButton2.titleLabel?.font = UIFont(name: "Inter-SemiBold", size: 18)
+            headerView.catalogButton1.titleLabel?.font = UIFont(name: "Inter", size: 18)
         }
         
         if scrollView.contentOffset.x < 280{
@@ -106,6 +110,9 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
             self.headerView.viewLineConstraintLeading?.constant = 15
             headerView.catalogButton2.setTitleColor(.lightGray, for: .normal)
             headerView.catalogButton1.setTitleColor(.black, for: .normal)
+            
+            headerView.catalogButton1.titleLabel?.font = UIFont(name: "Inter-SemiBold", size: 18)
+            headerView.catalogButton2.titleLabel?.font = UIFont(name: "Inter", size: 18)
         }
         UIView.animate(withDuration: 0.4) {
             self.headerView.layoutIfNeeded()
@@ -126,7 +133,7 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
             return cell
         }
             
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellIdWardrobes", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
         return cell
     }
     
@@ -205,6 +212,7 @@ extension CatalogViewControllerKitchens{
         let viewController = FeedFavorites()
         viewController.view.backgroundColor = .systemGray6
         viewController.modalPresentationStyle = .fullScreen
+        viewController.headerView.backButton.setImage(UIImage(named: "BackButton"), for: .normal)
         present(viewController, animated: true)
     }
     

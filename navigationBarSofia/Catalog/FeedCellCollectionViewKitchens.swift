@@ -1,12 +1,12 @@
 import UIKit
 
 class FeedCellCollectionViewKitchens: UICollectionViewCell {
-    
-    static let kitchens = FeedCellCollectionViewKitchens()
+    //Pагрузить избранное из firebase
     
     var nameFavArray: [String] = TilesNames.tilesNames
     
     var count: Int = 0
+    
     
     let collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout.init())
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
@@ -31,11 +31,31 @@ class FeedCellCollectionViewKitchens: UICollectionViewCell {
         
         layouT()
         
+        
+        
+        downloadFromFirebase { array in
+            for name in array{
+                AppDelegate.defaults.setValue(1, forKey: name)
+                
+            }
+        }
+        
+        
+        
+        
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func appear(){
+        
+        
+    }
+    
+    
     
     
     
@@ -45,6 +65,7 @@ extension FeedCellCollectionViewKitchens{
     func style(){
         collectionView.backgroundColor = .white
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+
         
     }
     
@@ -90,11 +111,14 @@ extension FeedCellCollectionViewKitchens: UICollectionViewDataSource{
             } else {
                 cell.favButton.setImage(UIImage(named: "HeartW"), for: .normal)
             }
+            cell.imageView.isHidden = true
             
             FirebaseDownload.shared.getPicture(name: cell.label.text! + ".jpg", nameFolder: "Kitchens") { pic in
                 cell.imageView.image = pic
+                cell.imageView.isHidden = false
+                
             }
-                    
+            
             return cell
         }
         
@@ -113,7 +137,7 @@ extension FeedCellCollectionViewKitchens: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSizeMake(frame.width, 450)
+        return CGSizeMake(frame.width, 480)
         
     }
     
@@ -131,3 +155,13 @@ extension FeedCellCollectionViewKitchens{
     
 }
 
+extension FeedCellCollectionViewKitchens{
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        CatalogViewControllerKitchens.kitchens.buttonFav.isHidden = true
+        
+    }
+    
+    
+}

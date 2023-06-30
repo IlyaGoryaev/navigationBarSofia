@@ -10,6 +10,8 @@ class FeedFavorites: UIViewController{
     
     var nameFavArray: [String] = []
     
+    let detailView = UIView()
+    
     var count: Int = 0
     
     let collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout.init())
@@ -27,6 +29,8 @@ class FeedFavorites: UIViewController{
         collectionView.delegate = self
         
         collectionView.dataSource = self
+        
+        detailView.isHidden = true
                 
         collectionView.register(FavoritesCell.self, forCellWithReuseIdentifier: "FavoritesCellId")
         
@@ -53,7 +57,7 @@ class FeedFavorites: UIViewController{
         
         self.dismiss(animated: true)
         
-        FeedCellCollectionViewKitchens.kitchens.collectionView.reloadData()
+        //FeedCellCollectionViewKitchens.kitchens.collectionView.reloadData()
         
     }
     
@@ -67,7 +71,8 @@ extension FeedFavorites{
         collectionView.backgroundColor = .white
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         headerView.translatesAutoresizingMaskIntoConstraints = false
-        
+        detailView.translatesAutoresizingMaskIntoConstraints = false
+        detailView.backgroundColor = .red
         
     }
     
@@ -76,6 +81,7 @@ extension FeedFavorites{
         
         self.view.addSubview(collectionView)
         self.view.addSubview(headerView)
+        self.view.addSubview(detailView)
         
         NSLayoutConstraint.activate([
             
@@ -87,7 +93,12 @@ extension FeedFavorites{
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 30)
+            headerView.heightAnchor.constraint(equalToConstant: 30),
+            
+            detailView.topAnchor.constraint(equalTo: view.topAnchor),
+            detailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            detailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            detailView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             
         
             
@@ -194,5 +205,14 @@ extension FeedFavorites: FavoritesCellDelegate{
     
     
     
+    
+}
+extension FeedFavorites{
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+        detailView.isHidden = false
+        
+    }
     
 }

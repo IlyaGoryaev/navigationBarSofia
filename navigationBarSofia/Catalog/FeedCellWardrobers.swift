@@ -2,7 +2,7 @@
 
 import UIKit
 
-class FeedCellWardrobes: UICollectionViewCell, UIScrollViewDelegate{
+/*class FeedCellWardrobes: UICollectionViewCell, UIScrollViewDelegate{
 
 
     
@@ -11,7 +11,7 @@ class FeedCellWardrobes: UICollectionViewCell, UIScrollViewDelegate{
     let stackView = UIStackView()
     
     
-    var tiles: [CatalogTileView] = []
+    //var tiles: [CatalogTileView] = []
         
     
     override init(frame: CGRect) {
@@ -104,3 +104,4 @@ extension FeedCellWardrobes{
     
     
 }
+*/

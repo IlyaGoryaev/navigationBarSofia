@@ -3,7 +3,7 @@ import Firebase
 import QuartzCore
 import Shiny
 
-class CatalogTileView: UIViewController{
+/*class CatalogTileView: UIViewController{
     
     let detailView = DetailView()
     
@@ -176,3 +176,4 @@ extension CatalogTileView{
         
     }
 }
+*/

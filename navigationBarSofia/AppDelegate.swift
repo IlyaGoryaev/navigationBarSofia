@@ -23,10 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         let layout = UICollectionViewFlowLayout()
+        
+        let layoutSettings = UICollectionViewFlowLayout()
          
         let catalogVC = CatalogViewControllerKitchens(collectionViewLayout: layout)
         let personVC = PersonViewController()
-        let settingsVC = SettingsViewController()
+        let settingsVC = SettingsViewController(collectionViewLayout: layoutSettings)
         let mainVC = MainScreenViewController()
         
         
@@ -35,11 +37,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainNC = UINavigationController(rootViewController: mainVC)
         let catalogNC = UINavigationController(rootViewController: catalogVC)
         catalogNC.navigationBar.isHidden = true
+        settingsNC.navigationBar.prefersLargeTitles = true
         
         
         let tabBarController = UITabBarController()
+        tabBarController.tabBar.backgroundColor = .systemGray6
         tabBarController.viewControllers = [mainNC, catalogVC, personNC, settingsNC]
-        tabBarController.view.backgroundColor = .red
+        tabBarController.view.backgroundColor = .systemGray6
         tabBarController.tabBar.backgroundColor = .white
         tabBarController.tabBar.isTranslucent = true
         

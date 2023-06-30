@@ -50,9 +50,6 @@
 		9D6540912A43741000EDAE2C /* DesignButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6540902A43741000EDAE2C /* DesignButton.swift */; };
 		9DDC92882A449E79003D21E3 /* FavToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC92872A449E79003D21E3 /* FavToFirebase.swift */; };
 		9DDC928C2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC928B2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift */; };
-		9DF4E25F2A45971C001CA9F3 /* FeedCellKitchens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E25E2A45971C001CA9F3 /* FeedCellKitchens.swift */; };
-		9DF4E2632A471204001CA9F3 /* PushToDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2622A471204001CA9F3 /* PushToDetailController.swift */; };
-		9DF4E2652A471442001CA9F3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2642A471442001CA9F3 /* DetailViewController.swift */; };
 		9DF4E2672A47834D001CA9F3 /* BlackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2662A47834D001CA9F3 /* BlackView.swift */; };
 		9DF4E26A2A482153001CA9F3 /* Inter SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DF4E2692A482153001CA9F3 /* Inter SemiBold.otf */; };
 		9DF4E26C2A482161001CA9F3 /* Inter Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DF4E26B2A482161001CA9F3 /* Inter Bold.otf */; };
@@ -76,6 +73,10 @@
 		9DF4E29A2A4AFE2D001CA9F3 /* FavoritesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2992A4AFE2D001CA9F3 /* FavoritesHeaderView.swift */; };
 		9DF4E29C2A4B1864001CA9F3 /* FeedCellCollectionViewKitchens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E29B2A4B1864001CA9F3 /* FeedCellCollectionViewKitchens.swift */; };
 		9DF4E29E2A4B2279001CA9F3 /* KitchensCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E29D2A4B2279001CA9F3 /* KitchensCell.swift */; };
+		9DF4E2A42A4DC3AB001CA9F3 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2A32A4DC3AB001CA9F3 /* SettingsHeaderView.swift */; };
+		9DF4E2A62A4DE149001CA9F3 /* SettingsBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2A52A4DE149001CA9F3 /* SettingsBottomView.swift */; };
+		9DF4E2A92A4E1917001CA9F3 /* SettingsFAQCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2A82A4E1917001CA9F3 /* SettingsFAQCell.swift */; };
+		9DF4E2AB2A4E2D58001CA9F3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2AA2A4E2D58001CA9F3 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,9 +98,6 @@
 		9D6540902A43741000EDAE2C /* DesignButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignButton.swift; sourceTree = "<group>"; };
 		9DDC92872A449E79003D21E3 /* FavToFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavToFirebase.swift; sourceTree = "<group>"; };
 		9DDC928B2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadFavoritesFromDatabase.swift; sourceTree = "<group>"; };
-		9DF4E25E2A45971C001CA9F3 /* FeedCellKitchens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellKitchens.swift; sourceTree = "<group>"; };
-		9DF4E2622A471204001CA9F3 /* PushToDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushToDetailController.swift; sourceTree = "<group>"; };
-		9DF4E2642A471442001CA9F3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9DF4E2662A47834D001CA9F3 /* BlackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackView.swift; sourceTree = "<group>"; };
 		9DF4E2692A482153001CA9F3 /* Inter SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter SemiBold.otf"; sourceTree = "<group>"; };
 		9DF4E26B2A482161001CA9F3 /* Inter Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter Bold.otf"; sourceTree = "<group>"; };
@@ -122,6 +120,10 @@
 		9DF4E2992A4AFE2D001CA9F3 /* FavoritesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesHeaderView.swift; sourceTree = "<group>"; };
 		9DF4E29B2A4B1864001CA9F3 /* FeedCellCollectionViewKitchens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellCollectionViewKitchens.swift; sourceTree = "<group>"; };
 		9DF4E29D2A4B2279001CA9F3 /* KitchensCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitchensCell.swift; sourceTree = "<group>"; };
+		9DF4E2A32A4DC3AB001CA9F3 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
+		9DF4E2A52A4DE149001CA9F3 /* SettingsBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBottomView.swift; sourceTree = "<group>"; };
+		9DF4E2A82A4E1917001CA9F3 /* SettingsFAQCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFAQCell.swift; sourceTree = "<group>"; };
+		9DF4E2AA2A4E2D58001CA9F3 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,12 +191,13 @@
 				9DF4E2932A4ADB98001CA9F3 /* FavViewController.swift */,
 				9D6540332A40EF1E00EDAE2C /* LaunchScreen.storyboard */,
 				9DF4E2952A4ADFF2001CA9F3 /* FavButton.swift */,
+				9DF4E2AA2A4E2D58001CA9F3 /* Colors.swift */,
 				9DF4E28F2A4AD6EB001CA9F3 /* MainScreenViewController.swift */,
 				9DF4E2912A4AD826001CA9F3 /* TabBarController.swift */,
 				9D6540902A43741000EDAE2C /* DesignButton.swift */,
 				9DF4E2772A482E53001CA9F3 /* Storyboard.storyboard */,
+				9DF4E2A22A4DC175001CA9F3 /* Settings */,
 				9D6540822A42FABF00EDAE2C /* StorageDownload.swift */,
-				9D6540402A40F0EE00EDAE2C /* SettingsViewController.swift */,
 				9D65407F2A42F41D00EDAE2C /* Catalog */,
 				9D6540362A40EF1E00EDAE2C /* Info.plist */,
 				9D6540802A42F4CE00EDAE2C /* GoogleService-Info.plist */,
@@ -207,11 +210,9 @@
 		9D65407F2A42F41D00EDAE2C /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
-				9D6540442A40F88B00EDAE2C /* CatalogHeaderView.swift */,
-				9DF4E2992A4AFE2D001CA9F3 /* FavoritesHeaderView.swift */,
+				9DF4E2A12A4C1A55001CA9F3 /* Headers */,
 				9DDC928B2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift */,
 				9D6540422A40F65500EDAE2C /* CatalogViewControllerKitchens.swift */,
-				9DF4E25E2A45971C001CA9F3 /* FeedCellKitchens.swift */,
 				9DF4E29B2A4B1864001CA9F3 /* FeedCellCollectionViewKitchens.swift */,
 				9DF4E2792A483E36001CA9F3 /* FeedCellWardrobers.swift */,
 				9DF4E27B2A4840D0001CA9F3 /* FeedFavorites.swift */,
@@ -254,10 +255,28 @@
 				9D65407D2A42E1F500EDAE2C /* CatalogTileView.swift */,
 				9D6540862A430F2200EDAE2C /* TilesName.swift */,
 				9D6540882A43111A00EDAE2C /* PicturesFromFirebaseToTiles.swift */,
-				9DF4E2642A471442001CA9F3 /* DetailViewController.swift */,
-				9DF4E2622A471204001CA9F3 /* PushToDetailController.swift */,
 			);
 			path = Tiles;
+			sourceTree = "<group>";
+		};
+		9DF4E2A12A4C1A55001CA9F3 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				9D6540442A40F88B00EDAE2C /* CatalogHeaderView.swift */,
+				9DF4E2992A4AFE2D001CA9F3 /* FavoritesHeaderView.swift */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		9DF4E2A22A4DC175001CA9F3 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9D6540402A40F0EE00EDAE2C /* SettingsViewController.swift */,
+				9DF4E2A32A4DC3AB001CA9F3 /* SettingsHeaderView.swift */,
+				9DF4E2A52A4DE149001CA9F3 /* SettingsBottomView.swift */,
+				9DF4E2A82A4E1917001CA9F3 /* SettingsFAQCell.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,7 +397,9 @@
 				9DF4E27F2A488728001CA9F3 /* DataModel.xcdatamodeld in Sources */,
 				9D6540432A40F65500EDAE2C /* CatalogViewControllerKitchens.swift in Sources */,
 				9D65407E2A42E1F500EDAE2C /* CatalogTileView.swift in Sources */,
+				9DF4E2A62A4DE149001CA9F3 /* SettingsBottomView.swift in Sources */,
 				9DF4E2832A488C13001CA9F3 /* Entity+CoreDataProperties.swift in Sources */,
+				9DF4E2A42A4DC3AB001CA9F3 /* SettingsHeaderView.swift in Sources */,
 				9DF4E2902A4AD6EB001CA9F3 /* MainScreenViewController.swift in Sources */,
 				9D6540912A43741000EDAE2C /* DesignButton.swift in Sources */,
 				9DF4E2822A488C13001CA9F3 /* Entity+CoreDataClass.swift in Sources */,
@@ -392,11 +413,10 @@
 				9D65403F2A40F0E500EDAE2C /* PersonViewController.swift in Sources */,
 				9DF4E29C2A4B1864001CA9F3 /* FeedCellCollectionViewKitchens.swift in Sources */,
 				9DF4E27C2A4840D0001CA9F3 /* FeedFavorites.swift in Sources */,
-				9DF4E2652A471442001CA9F3 /* DetailViewController.swift in Sources */,
-				9DF4E25F2A45971C001CA9F3 /* FeedCellKitchens.swift in Sources */,
 				9D6540292A40EF1D00EDAE2C /* AppDelegate.swift in Sources */,
-				9DF4E2632A471204001CA9F3 /* PushToDetailController.swift in Sources */,
 				9DF4E28C2A49A5ED001CA9F3 /* FavoritesCell.swift in Sources */,
+				9DF4E2A92A4E1917001CA9F3 /* SettingsFAQCell.swift in Sources */,
+				9DF4E2AB2A4E2D58001CA9F3 /* Colors.swift in Sources */,
 				9DF4E2672A47834D001CA9F3 /* BlackView.swift in Sources */,
 				9D6540872A430F2200EDAE2C /* TilesName.swift in Sources */,
 				9D6540832A42FABF00EDAE2C /* StorageDownload.swift in Sources */,
