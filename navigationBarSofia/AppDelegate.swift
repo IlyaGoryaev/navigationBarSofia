@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let personNC = UINavigationController(rootViewController: personVC)
         let settingsNC = UINavigationController(rootViewController: settingsVC)
+        settingsNC.navigationBar.barTintColor = .white
         let mainNC = UINavigationController(rootViewController: mainVC)
         let catalogNC = UINavigationController(rootViewController: catalogVC)
         catalogNC.navigationBar.isHidden = true
@@ -43,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         tabBarController.tabBar.backgroundColor = .systemGray6
         tabBarController.viewControllers = [mainNC, catalogVC, personNC, settingsNC]
-        tabBarController.view.backgroundColor = .systemGray6
+        tabBarController.view.backgroundColor = .navigationBarColor
         tabBarController.tabBar.backgroundColor = .white
         tabBarController.tabBar.isTranslucent = true
         

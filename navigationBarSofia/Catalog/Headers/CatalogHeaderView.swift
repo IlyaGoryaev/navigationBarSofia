@@ -52,7 +52,7 @@ extension CatalogHeaderView{
         catalogButton2.setTitle("Шкафы-купе", for: .normal)
         
         viewLine.translatesAutoresizingMaskIntoConstraints = false
-        viewLine.backgroundColor = .systemRed
+        viewLine.backgroundColor = .personColor
         
     
     }

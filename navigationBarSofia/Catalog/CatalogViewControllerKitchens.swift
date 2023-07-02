@@ -166,7 +166,7 @@ extension CatalogViewControllerKitchens{
         
         buttonFav.translatesAutoresizingMaskIntoConstraints = false
         
-        buttonFav.backgroundColor = UIColor(red: 254.0 / 255.0, green: 116.0 / 255.0, blue: 96.0 / 255.0, alpha: 1.0)
+        buttonFav.backgroundColor = .personColor
         
         buttonFav.layer.cornerRadius =  30
         

@@ -18,7 +18,9 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
         
         title = "Настройки"
         
-        navigationController?.navigationBar.backgroundColor = .systemGray6
+        navigationController?.navigationBar.tintColor = .white
+        
+        navigationController?.navigationBar.backgroundColor = .navigationBarColor
         
         collectionView.register(SettingsFAQCell.self, forCellWithReuseIdentifier: "cellId")
         

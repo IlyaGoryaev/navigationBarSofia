@@ -48,6 +48,7 @@
 		9D6540872A430F2200EDAE2C /* TilesName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6540862A430F2200EDAE2C /* TilesName.swift */; };
 		9D6540892A43111A00EDAE2C /* PicturesFromFirebaseToTiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6540882A43111A00EDAE2C /* PicturesFromFirebaseToTiles.swift */; };
 		9D6540912A43741000EDAE2C /* DesignButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6540902A43741000EDAE2C /* DesignButton.swift */; };
+		9D7BF89F2A520A8800502C3C /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7BF89E2A520A8800502C3C /* EntryViewController.swift */; };
 		9DDC92882A449E79003D21E3 /* FavToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC92872A449E79003D21E3 /* FavToFirebase.swift */; };
 		9DDC928C2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC928B2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift */; };
 		9DF4E2672A47834D001CA9F3 /* BlackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2662A47834D001CA9F3 /* BlackView.swift */; };
@@ -96,6 +97,7 @@
 		9D6540862A430F2200EDAE2C /* TilesName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesName.swift; sourceTree = "<group>"; };
 		9D6540882A43111A00EDAE2C /* PicturesFromFirebaseToTiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesFromFirebaseToTiles.swift; sourceTree = "<group>"; };
 		9D6540902A43741000EDAE2C /* DesignButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignButton.swift; sourceTree = "<group>"; };
+		9D7BF89E2A520A8800502C3C /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		9DDC92872A449E79003D21E3 /* FavToFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavToFirebase.swift; sourceTree = "<group>"; };
 		9DDC928B2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadFavoritesFromDatabase.swift; sourceTree = "<group>"; };
 		9DF4E2662A47834D001CA9F3 /* BlackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackView.swift; sourceTree = "<group>"; };
@@ -187,10 +189,10 @@
 				9D6540282A40EF1D00EDAE2C /* AppDelegate.swift */,
 				9D65403C2A40F0DD00EDAE2C /* ViewController.swift */,
 				9D6540312A40EF1E00EDAE2C /* Assets.xcassets */,
-				9D65403E2A40F0E500EDAE2C /* PersonViewController.swift */,
 				9DF4E2932A4ADB98001CA9F3 /* FavViewController.swift */,
 				9D6540332A40EF1E00EDAE2C /* LaunchScreen.storyboard */,
 				9DF4E2952A4ADFF2001CA9F3 /* FavButton.swift */,
+				9D7BF89D2A5209D900502C3C /* Person */,
 				9DF4E2AA2A4E2D58001CA9F3 /* Colors.swift */,
 				9DF4E28F2A4AD6EB001CA9F3 /* MainScreenViewController.swift */,
 				9DF4E2912A4AD826001CA9F3 /* TabBarController.swift */,
@@ -222,6 +224,15 @@
 				9DDC92872A449E79003D21E3 /* FavToFirebase.swift */,
 			);
 			path = Catalog;
+			sourceTree = "<group>";
+		};
+		9D7BF89D2A5209D900502C3C /* Person */ = {
+			isa = PBXGroup;
+			children = (
+				9D65403E2A40F0E500EDAE2C /* PersonViewController.swift */,
+				9D7BF89E2A520A8800502C3C /* EntryViewController.swift */,
+			);
+			path = Person;
 			sourceTree = "<group>";
 		};
 		9DF4E2682A48213A001CA9F3 /* Fonts */ = {
@@ -408,6 +419,7 @@
 				9DF4E2862A489097001CA9F3 /* CoreDataManager.swift in Sources */,
 				9DF4E2962A4ADFF2001CA9F3 /* FavButton.swift in Sources */,
 				9D65403D2A40F0DD00EDAE2C /* ViewController.swift in Sources */,
+				9D7BF89F2A520A8800502C3C /* EntryViewController.swift in Sources */,
 				9DF4E2942A4ADB98001CA9F3 /* FavViewController.swift in Sources */,
 				9DDC92882A449E79003D21E3 /* FavToFirebase.swift in Sources */,
 				9D65403F2A40F0E500EDAE2C /* PersonViewController.swift in Sources */,
@@ -568,7 +580,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -596,7 +608,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

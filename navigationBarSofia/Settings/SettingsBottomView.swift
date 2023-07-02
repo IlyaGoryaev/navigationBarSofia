@@ -94,8 +94,8 @@ extension SettingsBottomView{
     
     func setUpButtonTitle(button: UIButton, title: NSString){
         button.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-        var buttonText: NSString = title
-        var newlineRangeForButton: NSRange = buttonText.range(of: "\n")
+        let buttonText: NSString = title
+        let newlineRangeForButton: NSRange = buttonText.range(of: "\n")
         var substring1ForButton: NSString = ""
         var substring2ForButton: NSString = ""
         if(newlineRangeForButton.location != NSNotFound) {
