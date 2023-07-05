@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SettingsHeaderView: UIView {
     
@@ -20,9 +21,11 @@ class SettingsHeaderView: UIView {
     var redLineLeadingConstraint: NSLayoutConstraint?
     
     var redLineWidthConstraint: NSLayoutConstraint?
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        profileButton.addTarget(self, action: #selector(authOut), for: .touchUpInside)
         
         style()
         
@@ -34,7 +37,15 @@ class SettingsHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-
+    @objc func authOut(){
+        do{
+            try Auth.auth().signOut()
+        } catch {
+            
+        }
+        
+        
+    }
 }
 extension SettingsHeaderView{
     

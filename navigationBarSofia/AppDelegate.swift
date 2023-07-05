@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         settingsNC.navigationBar.prefersLargeTitles = true
         
         
-        let tabBarController = UITabBarController()
+        let tabBarController = TabBarController()
         tabBarController.tabBar.backgroundColor = .systemGray6
         tabBarController.viewControllers = [mainNC, catalogVC, personNC, settingsNC]
         tabBarController.view.backgroundColor = .navigationBarColor

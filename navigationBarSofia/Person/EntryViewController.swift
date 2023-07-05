@@ -9,7 +9,7 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
     let forgetPasswordButton = UIButton()
     let passwordField = UITextField()
     let entryWithLable = UILabel()
-    let goggleButton = UIButton()
+    let googleButton = UIButton()
     let facebookButton = UIButton()
     let leftLine = UIView()
     let rightLine = UIView()
@@ -23,9 +23,14 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
         
         style()
         layout()
-        print(view.frame.height - view.frame.height * 0.35)
+        
+        //regButton.addTarget(self, action: #selector(openRegController), for: .touchUpInside)
+        forgetPasswordButton.addTarget(self, action: #selector(tappedForgetPasswordButton), for: .touchUpInside)
         emailField.delegate = self
         passwordField.delegate = self
+        setUpTextField(emailField, "Почта")
+        setUpTextField(passwordField, "Пароль")
+        
     }
     
     required init?(coder: NSCoder) {
@@ -35,103 +40,41 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+    }
+    
+    @objc func openRegController(){
+        dismiss(animated: true)
+        let regController = RegistrationViewController()
+        regController.modalPresentationStyle = .fullScreen
+        present(regController, animated: true)
         
-        
-
     }
 
 }
-//554
 extension EntryViewController{
     
     func style(){
         
-        topView.translatesAutoresizingMaskIntoConstraints = false
-        topView.backgroundColor = .navigationBarColor
-        emailField.translatesAutoresizingMaskIntoConstraints = false
-        forgetPasswordButton.translatesAutoresizingMaskIntoConstraints = false
-        emailField.keyboardType = UIKeyboardType.default
-        emailField.returnKeyType = .done
-        emailField.autocapitalizationType = UITextAutocapitalizationType.none
-        emailField.font = UIFont.systemFont(ofSize: 16)
-        emailField.borderStyle = UITextField.BorderStyle.roundedRect
-        emailField.clearButtonMode = UITextField.ViewMode.whileEditing
-        emailField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
-        emailField.backgroundColor = .systemGray6
-        
-        
-        
-        entryButton.translatesAutoresizingMaskIntoConstraints = false
-        entryButton.setTitle("Вход", for: .normal)
-        entryButton.setTitleColor(.white, for: .normal)
-        entryButton.backgroundColor = .personColor
-        entryButton.titleLabel?.font = UIFont(name: "Inter-Bold", size: 18)
-        entryButton.layer.cornerRadius = 18
-        
-        forgetPasswordButton.setTitle("Забыли пароль?", for: .normal)
-        forgetPasswordButton.setTitleColor(.personColor, for: .normal)
-        forgetPasswordButton.titleLabel?.font = UIFont(name: "Inter-Medium", size: 15)
-        
-        passwordField.translatesAutoresizingMaskIntoConstraints = false
-        passwordField.keyboardType = UIKeyboardType.default
-        passwordField.returnKeyType = .done
-        passwordField.autocapitalizationType = UITextAutocapitalizationType.none
-        passwordField.font = UIFont.systemFont(ofSize: 16)
-        passwordField.borderStyle = UITextField.BorderStyle.roundedRect
-        passwordField.clearButtonMode = UITextField.ViewMode.whileEditing
-        passwordField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
-        passwordField.backgroundColor = .systemGray6
-        
-        entryWithLable.translatesAutoresizingMaskIntoConstraints = false
-        entryWithLable.text = "Войдите с"
-        entryWithLable.font = UIFont(name: "Inter-Medium", size: 15)
-        entryWithLable.textColor = .label
-        
-        goggleButton.translatesAutoresizingMaskIntoConstraints = false
-        goggleButton.setTitle("Google", for: .normal)
-        goggleButton.titleLabel?.font = UIFont(name: "Inter-Light", size: 15)
-        goggleButton.setTitleColor(.label, for: .normal)
-        goggleButton.backgroundColor = .systemGray6
-        goggleButton.layer.cornerRadius = 18
-        
-        facebookButton.translatesAutoresizingMaskIntoConstraints = false
-        facebookButton.setTitle("Facebook", for: .normal)
-        facebookButton.titleLabel?.font = UIFont(name: "Inter-Light", size: 15)
-        facebookButton.setTitleColor(.label, for: .normal)
-        facebookButton.backgroundColor = .systemGray6
-        facebookButton.layer.cornerRadius = 18
-        
-        leftLine.translatesAutoresizingMaskIntoConstraints = false
-        leftLine.backgroundColor = .systemGray5
-        
-        rightLine.translatesAutoresizingMaskIntoConstraints = false
-        rightLine.backgroundColor = .systemGray5
-        
-        noAccountLabel.translatesAutoresizingMaskIntoConstraints = false
-        noAccountLabel.text = "Нет аккаунта?"
-        noAccountLabel.font = UIFont(name: "Inter-Medium", size: 15)
-        noAccountLabel.textColor = .label
-        
-        regButton.translatesAutoresizingMaskIntoConstraints = false
-        regButton.setTitle("Зарегистрируйтесь", for: .normal)
-        regButton.setTitleColor(.personColor, for: .normal)
-        regButton.titleLabel?.font = UIFont(name: "Inter-Medium", size: 15)
-        
-        label2.translatesAutoresizingMaskIntoConstraints = false
-        label2.text = "Введите ваш логин и пароль"
-        label2.font = UIFont(name: "Inter-Medium", size: 15)
-        label2.textColor = .white
-        
-        label1.translatesAutoresizingMaskIntoConstraints = false
-        label1.text = "Войдите в свой\nаккаунт"
-        label1.font = UIFont(name: "Inter-Bold", size: 32)
-        label1.textColor = .white
-        label1.numberOfLines = 0
-        
+        setUpStyleTopView()
+        setUpStyleEmailField()
+        setUpStyleEntryButton()
+        setUpStyleForgetPasswordButton()
+        setUpStylePasswordField()
+        setUpStyleEntryWithLable()
+        setUpStyleGoogleButton()
+        setUpFacebookButton()
+        setUpStyleLeftLine()
+        setUpStyleRightLine()
+        setUpStyleRegButton()
+        setUpStyleLabel2()
+        setUpStyleLabel1()
+        setUpStyleNoAccountLabel()
         
     }
     
     func layout(){
+        
+        let sizeInProp = 0.3
         
         view.addSubview(topView)
         view.addSubview(emailField)
@@ -139,7 +82,7 @@ extension EntryViewController{
         view.addSubview(forgetPasswordButton)
         view.addSubview(passwordField)
         view.addSubview(entryWithLable)
-        view.addSubview(goggleButton)
+        view.addSubview(googleButton)
         view.addSubview(facebookButton)
         view.addSubview(leftLine)
         view.addSubview(rightLine)
@@ -152,21 +95,21 @@ extension EntryViewController{
             topView.topAnchor.constraint(equalTo: view.topAnchor),
             topView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             topView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topView.heightAnchor.constraint(equalToConstant: view.frame.height * 0.35),
+            topView.heightAnchor.constraint(equalToConstant: view.frame.height * sizeInProp),
             
-            emailField.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: (view.frame.height - view.frame.height * 0.35) * 0.2),
+            emailField.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: (view.frame.height - view.frame.height * sizeInProp) * 0.2),
             emailField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             emailField.widthAnchor.constraint(equalToConstant: view.frame.width - 2*25),
             emailField.heightAnchor.constraint(equalToConstant: view.frame.height / 17),
             
-            forgetPasswordButton.bottomAnchor.constraint(equalTo: emailField.bottomAnchor, constant: (view.frame.height - view.frame.height * 0.35) * 0.25),
+            forgetPasswordButton.bottomAnchor.constraint(equalTo: emailField.bottomAnchor, constant: (view.frame.height - view.frame.height * sizeInProp) * 0.23),
             forgetPasswordButton.trailingAnchor.constraint(equalTo: emailField.trailingAnchor, constant: -5),
             passwordField.bottomAnchor.constraint(equalTo: forgetPasswordButton.topAnchor, constant: -5),
             passwordField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             passwordField.widthAnchor.constraint(equalToConstant: view.frame.width - 2*25),
             passwordField.heightAnchor.constraint(equalToConstant: view.frame.height / 17),
             
-            entryWithLable.bottomAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: (view.frame.height - view.frame.height * 0.35) * 0.27),
+            entryWithLable.bottomAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: (view.frame.height - view.frame.height * sizeInProp) * 0.27),
             entryWithLable.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             entryButton.bottomAnchor.constraint(equalTo: entryWithLable.topAnchor, constant: -25),
@@ -174,10 +117,10 @@ extension EntryViewController{
             entryButton.widthAnchor.constraint(equalToConstant: view.frame.width - 2*25),
             entryButton.heightAnchor.constraint(equalToConstant: view.frame.height / 17),
             
-            goggleButton.topAnchor.constraint(equalTo: entryWithLable.bottomAnchor, constant: view.frame.height / 30),
-            goggleButton.heightAnchor.constraint(equalToConstant: view.frame.height / 17),
-            goggleButton.widthAnchor.constraint(equalToConstant: (view.frame.width - 2*25) / 2 - 10),
-            goggleButton.leadingAnchor.constraint(equalTo: entryButton.leadingAnchor),
+            googleButton.topAnchor.constraint(equalTo: entryWithLable.bottomAnchor, constant: view.frame.height / 30),
+            googleButton.heightAnchor.constraint(equalToConstant: view.frame.height / 17),
+            googleButton.widthAnchor.constraint(equalToConstant: (view.frame.width - 2*25) / 2 - 10),
+            googleButton.leadingAnchor.constraint(equalTo: entryButton.leadingAnchor),
             
             facebookButton.topAnchor.constraint(equalTo: entryWithLable.bottomAnchor, constant: view.frame.height / 30),
             facebookButton.heightAnchor.constraint(equalToConstant: view.frame.height / 17),
@@ -195,7 +138,7 @@ extension EntryViewController{
             rightLine.leadingAnchor.constraint(equalTo: entryWithLable.trailingAnchor, constant: 5),
             
             noAccountLabel.topAnchor.constraint(equalTo: facebookButton.bottomAnchor, constant: 25),
-            noAccountLabel.trailingAnchor.constraint(equalTo: goggleButton.trailingAnchor),
+            noAccountLabel.trailingAnchor.constraint(equalTo: googleButton.trailingAnchor),
             
             regButton.leadingAnchor.constraint(equalTo: view.centerXAnchor),
             regButton.topAnchor.constraint(equalTo: facebookButton.bottomAnchor, constant: 19),
@@ -207,11 +150,153 @@ extension EntryViewController{
             label1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
         
         ])
+    }
+}
+extension EntryViewController{
+    
+    @objc func tappedForgetPasswordButton(){
         
+        let controller = ForgotPasswordController()
+        
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true)
+        
+    }
+}
+
+extension EntryViewController{
+    
+    
+    func setUpTextField(_ textField: UITextField, _ labelText: String){
+        let label = UILabel()
+        label.text = labelText
+        label.font = UIFont(name: "Inter-Light", size: 14)
+        textField.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.bottomAnchor.constraint(equalTo: textField.topAnchor, constant: -10),
+            label.leadingAnchor.constraint(equalTo: textField.leadingAnchor)
+        ])
+    }
+    
+    func setUpStyleTopView(){
+        topView.translatesAutoresizingMaskIntoConstraints = false
+        topView.backgroundColor = .navigationBarColor
+    
+    }
+    
+    func setUpStyleEmailField(){
+        emailField.translatesAutoresizingMaskIntoConstraints = false
+        emailField.keyboardType = UIKeyboardType.default
+        emailField.returnKeyType = .done
+        emailField.autocapitalizationType = UITextAutocapitalizationType.none
+        emailField.font = UIFont.systemFont(ofSize: 20)
+        emailField.borderStyle = UITextField.BorderStyle.roundedRect
+        emailField.clearButtonMode = UITextField.ViewMode.whileEditing
+        emailField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        emailField.backgroundColor = .systemGray6
+        
+    }
+    
+    func setUpStyleEntryButton(){
+        entryButton.translatesAutoresizingMaskIntoConstraints = false
+        entryButton.setTitle("Вход", for: .normal)
+        entryButton.setTitleColor(.white, for: .normal)
+        entryButton.backgroundColor = .personColor
+        entryButton.titleLabel?.font = UIFont(name: "Inter-Bold", size: 18)
+        entryButton.layer.cornerRadius = 18
+    }
+    
+    func setUpStyleForgetPasswordButton(){
+        forgetPasswordButton.translatesAutoresizingMaskIntoConstraints = false
+        forgetPasswordButton.setTitle("Забыли пароль?", for: .normal)
+        forgetPasswordButton.setTitleColor(.personColor, for: .normal)
+        forgetPasswordButton.titleLabel?.font = UIFont(name: "Inter-Medium", size: 15)
         
         
     }
     
+    func setUpStylePasswordField(){
+        passwordField.translatesAutoresizingMaskIntoConstraints = false
+        passwordField.keyboardType = UIKeyboardType.default
+        passwordField.returnKeyType = .done
+        passwordField.autocapitalizationType = UITextAutocapitalizationType.none
+        passwordField.font = UIFont.systemFont(ofSize: 20)
+        passwordField.borderStyle = UITextField.BorderStyle.roundedRect
+        passwordField.clearButtonMode = UITextField.ViewMode.whileEditing
+        passwordField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        passwordField.backgroundColor = .systemGray6
+        passwordField.isSecureTextEntry = true
+        
+        
+    }
+    
+    func setUpStyleEntryWithLable(){
+        entryWithLable.translatesAutoresizingMaskIntoConstraints = false
+        entryWithLable.text = "Войдите с"
+        entryWithLable.font = UIFont(name: "Inter-Medium", size: 15)
+        entryWithLable.textColor = .label
+        
+    }
+    
+    func setUpStyleGoogleButton(){
+        googleButton.translatesAutoresizingMaskIntoConstraints = false
+        googleButton.setTitle("Google", for: .normal)
+        googleButton.titleLabel?.font = UIFont(name: "Inter-Light", size: 15)
+        googleButton.setTitleColor(.label, for: .normal)
+        googleButton.backgroundColor = .systemGray6
+        googleButton.layer.cornerRadius = 18
+        
+    }
+    
+    func setUpFacebookButton(){
+        facebookButton.translatesAutoresizingMaskIntoConstraints = false
+        facebookButton.setTitle("Facebook", for: .normal)
+        facebookButton.titleLabel?.font = UIFont(name: "Inter-Light", size: 15)
+        facebookButton.setTitleColor(.label, for: .normal)
+        facebookButton.backgroundColor = .systemGray6
+        facebookButton.layer.cornerRadius = 18
+        
+        
+    }
+    
+    func setUpStyleLeftLine(){
+        leftLine.translatesAutoresizingMaskIntoConstraints = false
+        leftLine.backgroundColor = .systemGray5
+    }
+    
+    func setUpStyleRightLine(){
+        rightLine.translatesAutoresizingMaskIntoConstraints = false
+        rightLine.backgroundColor = .systemGray5
+    }
+    func setUpStyleNoAccountLabel(){
+        noAccountLabel.translatesAutoresizingMaskIntoConstraints = false
+        noAccountLabel.text = "Нет аккаунта?"
+        noAccountLabel.font = UIFont(name: "Inter-Medium", size: 15)
+        noAccountLabel.textColor = .label
+    }
+    
+    func setUpStyleRegButton(){
+        regButton.translatesAutoresizingMaskIntoConstraints = false
+        regButton.setTitle("Зарегистрируйтесь", for: .normal)
+        regButton.setTitleColor(.personColor, for: .normal)
+        regButton.titleLabel?.font = UIFont(name: "Inter-Medium", size: 15)
+    }
+    
+    func setUpStyleLabel2(){
+        label2.translatesAutoresizingMaskIntoConstraints = false
+        label2.text = "Введите ваш логин и пароль"
+        label2.font = UIFont(name: "Inter-Medium", size: 15)
+        label2.textColor = .white
+    }
+    
+    func setUpStyleLabel1(){
+        self.label1.translatesAutoresizingMaskIntoConstraints = false
+        self.label1.text = "Войдите в свой\nаккаунт"
+        self.label1.font = UIFont(name: "Inter-Bold", size: 32)
+        self.label1.textColor = .white
+        self.label1.numberOfLines = 0
+    }
     
     
 }

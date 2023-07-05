@@ -20,7 +20,24 @@ class PersonViewController: ViewController {
         layout()
         print(view.frame.height)
         buttonLogIn.addTarget(self, action: #selector(tappedButtonLogIn), for: .touchUpInside)
+        buttonSignUp.addTarget(self, action: #selector(tappedButtonSignUp), for: .touchUpInside)
                 
+    }
+    
+    @objc func tappedButtonSignUp(){
+        let regController = RegistrationViewController()
+        let backButton = UIButton()
+        backButton.setTitle("Назад", for: .normal)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        regController.view.addSubview(backButton)
+        NSLayoutConstraint.activate([
+            backButton.topAnchor.constraint(equalTo: regController.view.safeAreaLayoutGuide.topAnchor),
+            backButton.leadingAnchor.constraint(equalTo: regController.view.leadingAnchor, constant: 15)
+        ])
+        regController.modalPresentationStyle = .fullScreen
+        navigationController?.navigationBar.isHidden = true
+        present(regController, animated: true)
+        backButton.addTarget(self, action: #selector(dismissEntryController), for: .touchUpInside)
     }
     
     @objc func tappedButtonLogIn(){
