@@ -10,6 +10,8 @@ extension EntryViewController{
             Auth.auth().signIn(withEmail: email, password: password) { result, error in
                 if error != nil{
                     self.showAlertError()
+                } else {
+                    self.dismiss(animated: true)
                 }
             }
         } else {

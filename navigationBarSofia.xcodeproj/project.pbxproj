@@ -53,6 +53,8 @@
 		9D7BF8A32A53423800502C3C /* ExtensionEntryViewControllerSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7BF8A22A53423800502C3C /* ExtensionEntryViewControllerSignIn.swift */; };
 		9D7BF8A52A534EDB00502C3C /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7BF8A42A534EDB00502C3C /* RegistrationViewController.swift */; };
 		9D7BF8A72A5362B000502C3C /* ExtensionRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7BF8A62A5362B000502C3C /* ExtensionRegistrationViewController.swift */; };
+		9D7BF8BC2A574B3B00502C3C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7BF8BB2A574B3B00502C3C /* DetailViewController.swift */; };
+		9D7BF8BF2A598BDA00502C3C /* Kitchen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7BF8BE2A598BDA00502C3C /* Kitchen.swift */; };
 		9DDC92882A449E79003D21E3 /* FavToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC92872A449E79003D21E3 /* FavToFirebase.swift */; };
 		9DDC928C2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC928B2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift */; };
 		9DF4E2672A47834D001CA9F3 /* BlackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4E2662A47834D001CA9F3 /* BlackView.swift */; };
@@ -106,6 +108,8 @@
 		9D7BF8A22A53423800502C3C /* ExtensionEntryViewControllerSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionEntryViewControllerSignIn.swift; sourceTree = "<group>"; };
 		9D7BF8A42A534EDB00502C3C /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		9D7BF8A62A5362B000502C3C /* ExtensionRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionRegistrationViewController.swift; sourceTree = "<group>"; };
+		9D7BF8BB2A574B3B00502C3C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9D7BF8BE2A598BDA00502C3C /* Kitchen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen.swift; sourceTree = "<group>"; };
 		9DDC92872A449E79003D21E3 /* FavToFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavToFirebase.swift; sourceTree = "<group>"; };
 		9DDC928B2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadFavoritesFromDatabase.swift; sourceTree = "<group>"; };
 		9DF4E2662A47834D001CA9F3 /* BlackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackView.swift; sourceTree = "<group>"; };
@@ -220,11 +224,13 @@
 		9D65407F2A42F41D00EDAE2C /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
+				9D7BF8BD2A598BB700502C3C /* Kitchen */,
 				9DF4E2A12A4C1A55001CA9F3 /* Headers */,
 				9DDC928B2A44BBAF003D21E3 /* DownloadFavoritesFromDatabase.swift */,
 				9D6540422A40F65500EDAE2C /* CatalogViewControllerKitchens.swift */,
 				9DF4E29B2A4B1864001CA9F3 /* FeedCellCollectionViewKitchens.swift */,
 				9DF4E2792A483E36001CA9F3 /* FeedCellWardrobers.swift */,
+				9D7BF8BB2A574B3B00502C3C /* DetailViewController.swift */,
 				9DF4E27B2A4840D0001CA9F3 /* FeedFavorites.swift */,
 				9DF4E29D2A4B2279001CA9F3 /* KitchensCell.swift */,
 				9DF4E28B2A49A5ED001CA9F3 /* FavoritesCell.swift */,
@@ -245,6 +251,14 @@
 				9D7BF8A02A5239DC00502C3C /* ForgotPasswordController.swift */,
 			);
 			path = Person;
+			sourceTree = "<group>";
+		};
+		9D7BF8BD2A598BB700502C3C /* Kitchen */ = {
+			isa = PBXGroup;
+			children = (
+				9D7BF8BE2A598BDA00502C3C /* Kitchen.swift */,
+			);
+			path = Kitchen;
 			sourceTree = "<group>";
 		};
 		9DF4E2682A48213A001CA9F3 /* Fonts */ = {
@@ -439,10 +453,12 @@
 				9D65403F2A40F0E500EDAE2C /* PersonViewController.swift in Sources */,
 				9DF4E29C2A4B1864001CA9F3 /* FeedCellCollectionViewKitchens.swift in Sources */,
 				9DF4E27C2A4840D0001CA9F3 /* FeedFavorites.swift in Sources */,
+				9D7BF8BF2A598BDA00502C3C /* Kitchen.swift in Sources */,
 				9D6540292A40EF1D00EDAE2C /* AppDelegate.swift in Sources */,
 				9DF4E28C2A49A5ED001CA9F3 /* FavoritesCell.swift in Sources */,
 				9D7BF8A12A5239DC00502C3C /* ForgotPasswordController.swift in Sources */,
 				9DF4E2A92A4E1917001CA9F3 /* SettingsFAQCell.swift in Sources */,
+				9D7BF8BC2A574B3B00502C3C /* DetailViewController.swift in Sources */,
 				9DF4E2AB2A4E2D58001CA9F3 /* Colors.swift in Sources */,
 				9DF4E2672A47834D001CA9F3 /* BlackView.swift in Sources */,
 				9D7BF8A52A534EDB00502C3C /* RegistrationViewController.swift in Sources */,

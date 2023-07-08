@@ -2,7 +2,9 @@ import UIKit
 
 class KitchensCell: UICollectionViewCell {
     
-    let imageView = UIImageView()
+    let imageView = CustomImageView()
+    
+    var representedId: String = ""
     
     let favButton = makeFuvButton(text: "Избранное")
     
@@ -12,9 +14,7 @@ class KitchensCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        
-        
+
         style()
         
         layout()

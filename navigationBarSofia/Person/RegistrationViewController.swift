@@ -51,7 +51,7 @@ extension RegistrationViewController{
     }
     
     func layout(){
-        let sizeInProp = 0.3
+        let sizeInProp = 0.25
         
         view.addSubview(topView)
         view.addSubview(nameField)

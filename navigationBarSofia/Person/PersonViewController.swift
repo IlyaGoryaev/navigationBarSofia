@@ -27,13 +27,17 @@ class PersonViewController: ViewController {
     @objc func tappedButtonSignUp(){
         let regController = RegistrationViewController()
         let backButton = UIButton()
-        backButton.setTitle("Назад", for: .normal)
         backButton.translatesAutoresizingMaskIntoConstraints = false
         regController.view.addSubview(backButton)
+        let image = UIImage(systemName: "xmark")
+        backButton.setImage(image, for: .normal)
+        
         NSLayoutConstraint.activate([
             backButton.topAnchor.constraint(equalTo: regController.view.safeAreaLayoutGuide.topAnchor),
-            backButton.leadingAnchor.constraint(equalTo: regController.view.leadingAnchor, constant: 15)
+            backButton.leadingAnchor.constraint(equalTo: regController.view.leadingAnchor),
+            backButton.widthAnchor.constraint(equalToConstant: 60)
         ])
+        
         regController.modalPresentationStyle = .fullScreen
         navigationController?.navigationBar.isHidden = true
         present(regController, animated: true)
@@ -44,13 +48,16 @@ class PersonViewController: ViewController {
         
         let entryController = EntryViewController()
         let backButton = UIButton()
-        backButton.setTitle("Назад", for: .normal)
-      backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.setImage(UIImage(systemName: "xmark"), for: [])
         entryController.view.addSubview(backButton)
+        
         NSLayoutConstraint.activate([
             backButton.topAnchor.constraint(equalTo: entryController.view.safeAreaLayoutGuide.topAnchor),
-            backButton.leadingAnchor.constraint(equalTo: entryController.view.leadingAnchor, constant: 15)
+            backButton.leadingAnchor.constraint(equalTo: entryController.view.leadingAnchor),
+            backButton.widthAnchor.constraint(equalToConstant: 60),
         ])
+        
         entryController.modalPresentationStyle = .fullScreen
         navigationController?.navigationBar.isHidden = true
         present(entryController, animated: true)
@@ -154,7 +161,5 @@ extension PersonViewController{
             
             
         ])
-        
-        
     }
 }

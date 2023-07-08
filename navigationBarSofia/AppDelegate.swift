@@ -5,16 +5,15 @@ import FirebaseCore
 //https://stackoverflow.com/questions/31490358/how-to-delete-item-from-collection-view
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
     
+    var window: UIWindow?
+        
     static var defaults = UserDefaults.standard
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
-        
         
         
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -37,13 +36,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         settingsNC.navigationBar.barTintColor = .white
         let mainNC = UINavigationController(rootViewController: mainVC)
         let catalogNC = UINavigationController(rootViewController: catalogVC)
-        catalogNC.navigationBar.isHidden = true
+        //catalogNC.navigationBar.isHidden = true
         settingsNC.navigationBar.prefersLargeTitles = true
         
         
         let tabBarController = TabBarController()
         tabBarController.tabBar.backgroundColor = .systemGray6
-        tabBarController.viewControllers = [mainNC, catalogVC, personNC, settingsNC]
+        tabBarController.viewControllers = [mainNC, catalogNC, personNC, settingsNC]
         tabBarController.view.backgroundColor = .navigationBarColor
         tabBarController.tabBar.backgroundColor = .white
         tabBarController.tabBar.isTranslucent = true

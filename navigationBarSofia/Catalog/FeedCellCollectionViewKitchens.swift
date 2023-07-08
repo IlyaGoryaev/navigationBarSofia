@@ -1,4 +1,6 @@
 import UIKit
+import Firebase
+import FirebaseStorage
 
 class FeedCellCollectionViewKitchens: UICollectionViewCell {
     //Pагрузить избранное из firebase
@@ -7,6 +9,8 @@ class FeedCellCollectionViewKitchens: UICollectionViewCell {
     
     var count: Int = 0
     
+    let view = DetailViewController()
+    
     
     let collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout.init())
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
@@ -14,7 +18,6 @@ class FeedCellCollectionViewKitchens: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         
         
         layout.scrollDirection = UICollectionView.ScrollDirection.vertical
@@ -98,10 +101,17 @@ extension FeedCellCollectionViewKitchens: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoritesCellId", for: indexPath) as! KitchensCell?{
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoritesCellId", for: indexPath) as? KitchensCell{
+            let representedId = indexPath.row
+            cell.representedId = String(representedId)
+            cell.imageView.image = nil
             
+            FirebaseDownload.shared.getPicture(name: nameFavArray[indexPath.row] + ".jpeg", nameFolder: "Kitchens") { pic in
+                if cell.representedId == String(representedId){
+                    cell.imageView.image = pic
+                }
+            }
             cell.backgroundColor = .white
-            
             cell.label.text = nameFavArray[indexPath.row]
             cell.label.font = UIFont(name: "Inter", size: 18)
             if AppDelegate.defaults.value(forKey: cell.label.text!) as? Int == 1{
@@ -110,13 +120,6 @@ extension FeedCellCollectionViewKitchens: UICollectionViewDataSource{
                 
             } else {
                 cell.favButton.setImage(UIImage(named: "HeartW"), for: .normal)
-            }
-            cell.imageView.isHidden = true
-            
-            FirebaseDownload.shared.getPicture(name: cell.label.text! + ".jpg", nameFolder: "Kitchens") { pic in
-                cell.imageView.image = pic
-                cell.imageView.isHidden = false
-                
             }
             
             return cell
@@ -129,7 +132,6 @@ extension FeedCellCollectionViewKitchens: UICollectionViewDataSource{
     }
     
     
-    
 }
 
 
@@ -137,31 +139,53 @@ extension FeedCellCollectionViewKitchens: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSizeMake(frame.width, 480)
+        return CGSizeMake(frame.width, 450)
         
     }
     
     
     
 }
-extension FeedCellCollectionViewKitchens{
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        //collectionView.reloadData()
-        //UserDefaults
-    }
-    
-    
-}
-
 extension FeedCellCollectionViewKitchens{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        CatalogViewControllerKitchens.kitchens.buttonFav.isHidden = true
+        let controller = UIViewController()
+        controller.modalPresentationStyle = .fullScreen
+        controller.view.backgroundColor = .red
+        let backButton = UIButton()
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        controller.view.addSubview(backButton)
+        backButton.setTitle("Back", for: .normal)
+        backButton.setTitleColor(.label, for: .normal)
+        NSLayoutConstraint.activate([
+            backButton.centerXAnchor.constraint(equalTo: controller.view.centerXAnchor),
+            backButton.centerYAnchor.constraint(equalTo: controller.view.centerYAnchor)
+        
+        ])
+        
+        
+        if let controllerView = UIApplication.shared.delegate?.window?!.windowScene?.keyWindow?.rootViewController as? TabBarController{
+            print("gferfer")
+            
+            
+            
+        }
+    }
+}
+
+extension FeedCellCollectionViewKitchens{
+    
+    @objc func dismissController(){
+        
+        view.view.isHidden = true
+        
         
     }
     
-    
+    @objc func dismissController1(){
+        
+        UIApplication.shared.delegate?.window?!.windowScene?.keyWindow?.rootViewController?.dismiss(animated: true)
+    }
+
 }

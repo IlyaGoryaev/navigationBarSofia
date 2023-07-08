@@ -10,7 +10,7 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
     let passwordField = UITextField()
     let entryWithLable = UILabel()
     let googleButton = UIButton()
-    let facebookButton = UIButton()
+    let appleButton = UIButton()
     let leftLine = UIView()
     let rightLine = UIView()
     let noAccountLabel = UILabel()
@@ -62,7 +62,7 @@ extension EntryViewController{
         setUpStylePasswordField()
         setUpStyleEntryWithLable()
         setUpStyleGoogleButton()
-        setUpFacebookButton()
+        setUpAppleButton()
         setUpStyleLeftLine()
         setUpStyleRightLine()
         setUpStyleRegButton()
@@ -83,7 +83,7 @@ extension EntryViewController{
         view.addSubview(passwordField)
         view.addSubview(entryWithLable)
         view.addSubview(googleButton)
-        view.addSubview(facebookButton)
+        view.addSubview(appleButton)
         view.addSubview(leftLine)
         view.addSubview(rightLine)
         view.addSubview(noAccountLabel)
@@ -122,10 +122,10 @@ extension EntryViewController{
             googleButton.widthAnchor.constraint(equalToConstant: (view.frame.width - 2*25) / 2 - 10),
             googleButton.leadingAnchor.constraint(equalTo: entryButton.leadingAnchor),
             
-            facebookButton.topAnchor.constraint(equalTo: entryWithLable.bottomAnchor, constant: view.frame.height / 30),
-            facebookButton.heightAnchor.constraint(equalToConstant: view.frame.height / 17),
-            facebookButton.widthAnchor.constraint(equalToConstant: (view.frame.width - 2*25) / 2 - 10),
-            facebookButton.trailingAnchor.constraint(equalTo: entryButton.trailingAnchor),
+            appleButton.topAnchor.constraint(equalTo: entryWithLable.bottomAnchor, constant: view.frame.height / 30),
+            appleButton.heightAnchor.constraint(equalToConstant: view.frame.height / 17),
+            appleButton.widthAnchor.constraint(equalToConstant: (view.frame.width - 2*25) / 2 - 10),
+            appleButton.trailingAnchor.constraint(equalTo: entryButton.trailingAnchor),
             
             leftLine.topAnchor.constraint(equalTo: entryWithLable.centerYAnchor),
             leftLine.leadingAnchor.constraint(equalTo: entryButton.leadingAnchor),
@@ -137,11 +137,11 @@ extension EntryViewController{
             rightLine.heightAnchor.constraint(equalToConstant: 2),
             rightLine.leadingAnchor.constraint(equalTo: entryWithLable.trailingAnchor, constant: 5),
             
-            noAccountLabel.topAnchor.constraint(equalTo: facebookButton.bottomAnchor, constant: 25),
+            noAccountLabel.topAnchor.constraint(equalTo: appleButton.bottomAnchor, constant: 25),
             noAccountLabel.trailingAnchor.constraint(equalTo: googleButton.trailingAnchor),
             
             regButton.leadingAnchor.constraint(equalTo: view.centerXAnchor),
-            regButton.topAnchor.constraint(equalTo: facebookButton.bottomAnchor, constant: 19),
+            regButton.topAnchor.constraint(equalTo: appleButton.bottomAnchor, constant: 19),
             
             label2.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -20),
             label2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
@@ -241,21 +241,25 @@ extension EntryViewController{
     
     func setUpStyleGoogleButton(){
         googleButton.translatesAutoresizingMaskIntoConstraints = false
+        //googleButton.setImage(UIImage(named: "Google"), for: .normal)
         googleButton.setTitle("Google", for: .normal)
+        //googleButton.imageView?.contentMode = .scaleAspectFit
         googleButton.titleLabel?.font = UIFont(name: "Inter-Light", size: 15)
         googleButton.setTitleColor(.label, for: .normal)
         googleButton.backgroundColor = .systemGray6
         googleButton.layer.cornerRadius = 18
         
+        
     }
     
-    func setUpFacebookButton(){
-        facebookButton.translatesAutoresizingMaskIntoConstraints = false
-        facebookButton.setTitle("Facebook", for: .normal)
-        facebookButton.titleLabel?.font = UIFont(name: "Inter-Light", size: 15)
-        facebookButton.setTitleColor(.label, for: .normal)
-        facebookButton.backgroundColor = .systemGray6
-        facebookButton.layer.cornerRadius = 18
+    func setUpAppleButton(){
+        appleButton.translatesAutoresizingMaskIntoConstraints = false
+        appleButton.setImage(UIImage(systemName: "apple.logo"), for: .normal)
+        appleButton.setTitle("Apple", for: .normal)
+        appleButton.titleLabel?.font = UIFont(name: "Inter-Light", size: 15)
+        appleButton.setTitleColor(.label, for: .normal)
+        appleButton.backgroundColor = .systemGray6
+        appleButton.layer.cornerRadius = 18
         
         
     }
