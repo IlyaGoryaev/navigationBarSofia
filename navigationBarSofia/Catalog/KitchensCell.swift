@@ -2,7 +2,11 @@ import UIKit
 
 class KitchensCell: UICollectionViewCell {
     
-    let imageView = CustomImageView()
+    let imageView = UIImageView()
+    
+    let downloadView = UIImageView()
+    
+    let downloadingController = UIActivityIndicatorView()
     
     var representedId: String = ""
     
@@ -10,10 +14,14 @@ class KitchensCell: UICollectionViewCell {
     
     let label = UILabel()
     
+    let subView = UIImageView()
+    
     let descriptionLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        downloadingController.startAnimating()
 
         style()
         
@@ -59,25 +67,32 @@ extension KitchensCell{
         imageView.image = UIImage(named: "Лайм")
         imageView.layer.cornerRadius = 20
         imageView.clipsToBounds = true
+        
         favButton.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
+        subView.translatesAutoresizingMaskIntoConstraints = false
+        subView.layer.cornerRadius = 20
+        subView.clipsToBounds = true
+        subView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        subView.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        label.textColor = .white
         
+        downloadView.translatesAutoresizingMaskIntoConstraints = false
+        downloadView.backgroundColor = .systemGray5
+        downloadView.layer.cornerRadius = 20
+        downloadView.clipsToBounds = true
         
-        descriptionLabel.text = "Кухня с фасадами из пластика. Одним из самых популярных материалов для изготовления кухонных фасадов считается пластик. Благодаря эффектному внешнему виду, богатой палитре цветов и фактуры фасады из пластикасоздают оригинальные комбинации."
-        descriptionLabel.numberOfLines = 0
-        descriptionLabel.font = UIFont(name: "Inter-Light", size: 15)
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        
+        downloadingController.translatesAutoresizingMaskIntoConstraints = false
         
     }
     
     func layout(){
-        
+        addSubview(downloadView)
+        downloadView.addSubview(downloadingController)
         addSubview(imageView)
         addSubview(favButton)
-        addSubview(label)
-        addSubview(descriptionLabel)
+        addSubview(subView)
+        subView.addSubview(label)
         
         NSLayoutConstraint.activate([
         
@@ -85,6 +100,18 @@ extension KitchensCell{
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             imageView.heightAnchor.constraint(equalToConstant: 300),
+            downloadView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            downloadView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            downloadView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            downloadView.heightAnchor.constraint(equalToConstant: 300),
+            
+            downloadingController.centerXAnchor.constraint(equalTo: downloadView.centerXAnchor),
+            downloadingController.centerYAnchor.constraint(equalTo: downloadView.centerYAnchor),
+            
+            subView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            subView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            subView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+            subView.heightAnchor.constraint(equalToConstant: 40),
             
             favButton.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 15),
             favButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -15),
@@ -92,11 +119,8 @@ extension KitchensCell{
             favButton.heightAnchor.constraint(equalToConstant: 30),
             favButton.widthAnchor.constraint(equalToConstant: 30),
             
-            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
-            label.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 8),
-            descriptionLabel.topAnchor.constraint(equalTo:label.bottomAnchor, constant: 8),
-            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
+            label.centerYAnchor.constraint(equalTo: subView.centerYAnchor),
+            label.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 15),
             
             
             

@@ -2,12 +2,13 @@
 
 import UIKit
 import FirebaseCore
+import Firebase
 //https://stackoverflow.com/questions/31490358/how-to-delete-item-from-collection-view
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-        
+            
     static var defaults = UserDefaults.standard
     
 
@@ -38,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let catalogNC = UINavigationController(rootViewController: catalogVC)
         //catalogNC.navigationBar.isHidden = true
         settingsNC.navigationBar.prefersLargeTitles = true
+        catalogNC.navigationBar.prefersLargeTitles = true
         
         
         let tabBarController = TabBarController()
@@ -49,6 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         window?.rootViewController = tabBarController
+        
+        
         
         return true
     }

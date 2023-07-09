@@ -3,7 +3,6 @@ import Firebase
 import FirebaseStorage
 
 class FeedCellCollectionViewKitchens: UICollectionViewCell {
-    //Pагрузить избранное из firebase
     
     var nameFavArray: [String] = TilesNames.tilesNames
     
@@ -33,8 +32,6 @@ class FeedCellCollectionViewKitchens: UICollectionViewCell {
         style()
         
         layouT()
-        
-        
         
         downloadFromFirebase { array in
             for name in array{
@@ -105,10 +102,18 @@ extension FeedCellCollectionViewKitchens: UICollectionViewDataSource{
             let representedId = indexPath.row
             cell.representedId = String(representedId)
             cell.imageView.image = nil
+            cell.label.isHidden = true
+            cell.subView.isHidden = true
+            cell.favButton.isHidden = true
+            cell.downloadingController.startAnimating()
             
             FirebaseDownload.shared.getPicture(name: nameFavArray[indexPath.row] + ".jpeg", nameFolder: "Kitchens") { pic in
                 if cell.representedId == String(representedId){
                     cell.imageView.image = pic
+                    cell.label.isHidden = false
+                    cell.subView.isHidden = false
+                    cell.favButton.isHidden = false
+                    cell.downloadingController.stopAnimating()
                 }
             }
             cell.backgroundColor = .white
@@ -139,7 +144,7 @@ extension FeedCellCollectionViewKitchens: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSizeMake(frame.width, 450)
+        return CGSizeMake(frame.width, 330)
         
     }
     
