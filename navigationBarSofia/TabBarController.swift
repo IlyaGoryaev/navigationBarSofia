@@ -6,12 +6,14 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBar.tintColor = .personColor
         Auth.auth().addStateDidChangeListener { auth, user in
             if user == nil{
                 let personController = PersonViewController()
                 self.viewControllers![2] = personController
             } else {
                 let controller = UIViewController()
+                controller.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.fill"), tag: 0)
                 let image = UIImageView()
                 image.image = UIImage(named: "Profile")
                 image.contentMode = .scaleAspectFill

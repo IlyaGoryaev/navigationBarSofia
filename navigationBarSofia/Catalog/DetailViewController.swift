@@ -1,44 +1,109 @@
 
 
 import UIKit
+import Firebase
 
-
-class DetailViewController: NSObject {
+class DetailViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout{
     
-    let view = UIView(frame: (UIApplication.shared.delegate?.window?!.windowScene?.keyWindow!.frame)!)
-    let backButton = UIButton()
-    var image = UIImageView()
-    var label = UILabel()
+    var name: String?
     
-    func presentDetailViewController(){
-        view.isHidden = false
+    
+    override init(collectionViewLayout layoutCollection: UICollectionViewLayout) {
+        super.init(collectionViewLayout: layoutCollection)
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellId")
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout{
         
-        if let keyWindow = UIApplication.shared.delegate?.window?!.windowScene?.keyWindow{
-            view.backgroundColor = .red
-            backButton.translatesAutoresizingMaskIntoConstraints = false
-            backButton.setImage(UIImage(systemName: "xmark"), for: [])
-            image.translatesAutoresizingMaskIntoConstraints = false
-            label.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(image)
-            view.addSubview(label)
-            view.addSubview(backButton)
+            flowLayout.scrollDirection = .horizontal
+            flowLayout.minimumLineSpacing = 0
             
-            NSLayoutConstraint.activate([
-                backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                backButton.widthAnchor.constraint(equalToConstant: 60),
-                
-                image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                image.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                image.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                image.heightAnchor.constraint(equalToConstant: 300),
-                
-                label.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 20),
-                label.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            ])
-            
-            keyWindow.addSubview(view)
         }
+        style()
+        layout()
+        
+    }
+    
+    init(collectionViewLayout layoutCollection: UICollectionViewLayout, name: String){
+        super.init(collectionViewLayout: layoutCollection)
+        self.name = name
+        collectionView.register(CellKitchenToDetailController.self, forCellWithReuseIdentifier: "cellId")
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout{
+        
+            flowLayout.scrollDirection = .horizontal
+            flowLayout.minimumLineSpacing = 0
+            
+        }
+        style()
+        layout()
+        collectionView.isPagingEnabled = true
+        
+        
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    
+    
+}
+extension DetailViewController{
+    
+    func style(){
+        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+    }
+    
+    func layout(){
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.heightAnchor.constraint(equalToConstant: view.frame.height * 0.35)
+        
+        ])
+        
+    }
+    
+    
+}
+extension DetailViewController{
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as? CellKitchenToDetailController{
+            cell.backgroundColor = .systemGray5
+            cell.imageView.image = nil
+            FirebaseDownload.shared.getPictureForDetail(name: self.name! + String(indexPath.row + 1) + ".jpeg", nameFolder: "KitchensDetails", nameSubFolder: self.name!) { pic in
+                cell.imageView.image = pic
+            }
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let count = AppDelegate.defaults.object(forKey: name!) as? Int{
+            return count
+        }
+        
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSizeMake(view.frame.width, view.frame.height * 0.35)
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.collectionView.layoutIfNeeded()
     }
     
 }
+
+
+
+
+

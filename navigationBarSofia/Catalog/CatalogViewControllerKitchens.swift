@@ -6,6 +6,7 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
         
     let headerView = CatalogHeaderView()
     
+    var headerViewTopConstraints: NSLayoutConstraint?
     
     static let kitchens = CatalogViewControllerKitchens(collectionViewLayout: UICollectionViewLayout())
     
@@ -14,9 +15,12 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
     override init(collectionViewLayout layout: UICollectionViewLayout) {
         super.init(collectionViewLayout: layout)
         
-        view.backgroundColor = .white
-        title = "Catalog"
-        headerView.backgroundColor = .systemGray6
+        AppDelegate.defaults.set(0, forKey: "isScrollCatalogController")
+        tabBarItem = UITabBarItem(title: "Каталог", image: UIImage(systemName: "book"), tag: 0)
+        view.backgroundColor = .navigationBarColor
+        title = "Каталог"
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.red]
+        headerView.backgroundColor = .navigationBarColor
         headerView.catalogButton2.addTarget(self, action: #selector(onClickCatalogButton2), for: .touchUpInside)
         headerView.catalogButton1.addTarget(self, action: #selector(onClickCatalogButton1), for: .touchUpInside)
         headerView.catalogButton1.titleLabel?.font = UIFont(name: "Inter-SemiBold", size: 18)
@@ -95,11 +99,14 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset)
+        if (scrollView.contentOffset.x > 1){
+            AppDelegate.defaults.set(1, forKey: "isScrollCatalogController")
+        }
 
         if scrollView.contentOffset.x > 280{
             headerView.viewLineConstraint?.constant = 120
             self.headerView.viewLineConstraintLeading?.constant = 101
-            headerView.catalogButton2.setTitleColor(.black, for: .normal)
+            headerView.catalogButton2.setTitleColor(.white, for: .normal)
             headerView.catalogButton1.setTitleColor(.lightGray, for: .normal)
             headerView.catalogButton2.titleLabel?.font = UIFont(name: "Inter-SemiBold", size: 18)
             headerView.catalogButton1.titleLabel?.font = UIFont(name: "Inter", size: 18)
@@ -109,13 +116,15 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
             headerView.viewLineConstraint?.constant = 55
             self.headerView.viewLineConstraintLeading?.constant = 15
             headerView.catalogButton2.setTitleColor(.lightGray, for: .normal)
-            headerView.catalogButton1.setTitleColor(.black, for: .normal)
+            headerView.catalogButton1.setTitleColor(.white, for: .normal)
             
             headerView.catalogButton1.titleLabel?.font = UIFont(name: "Inter-SemiBold", size: 18)
             headerView.catalogButton2.titleLabel?.font = UIFont(name: "Inter", size: 18)
         }
-        UIView.animate(withDuration: 0.4) {
-            self.headerView.layoutIfNeeded()
+        if AppDelegate.defaults.value(forKey: "isScrollCatalogController") as! Int == 1 {
+            UIView.animate(withDuration: 0.4) {
+                self.headerView.layoutIfNeeded()
+            }
         }
         
     }
@@ -138,7 +147,7 @@ class CatalogViewControllerKitchens: UICollectionViewController, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSizeMake(view.frame.width, view.frame.height - headerView.frame.height - tabBarController!.tabBar.frame.height)
+        return CGSizeMake(view.frame.width, view.frame.height - headerView.frame.height - tabBarController!.tabBar.frame.height - (navigationController?.navigationBar.frame.height)! - 45)
     }
     
     func scrollToMenuIndex(menuIndex: Int){
@@ -170,7 +179,9 @@ extension CatalogViewControllerKitchens{
         
         buttonFav.layer.cornerRadius =  30
         
-        buttonFav.setImage(UIImage(named: "HeartWhite3"), for: .normal)
+        buttonFav.setImage(UIImage(named: "HeartWhite"), for: .normal)
+        
+        buttonFav.imageEdgeInsets = UIEdgeInsets(top: 17, left: 10, bottom: 17, right: 10)
         
         buttonFav.imageView?.contentMode = .scaleAspectFit
         
@@ -183,10 +194,13 @@ extension CatalogViewControllerKitchens{
         view.addSubview(headerView)
         view.addSubview(buttonFav)
         
+        headerViewTopConstraints = headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: view.topAnchor),
+            headerViewTopConstraints!,
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: 46),
             
             collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

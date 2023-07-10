@@ -44,7 +44,7 @@ extension SettingsBottomView{
         button3.translatesAutoresizingMaskIntoConstraints = false
         blackLine.translatesAutoresizingMaskIntoConstraints = false
         blackLine.backgroundColor = .black
-        button1.backgroundColor = .settingsButton
+        button1.backgroundColor = .white
         button2.backgroundColor = .settingsButton
         button3.backgroundColor = .settingsButton
         
@@ -54,9 +54,17 @@ extension SettingsBottomView{
         button1.layer.cornerRadius = 30
         button2.layer.cornerRadius = 30
         button3.layer.cornerRadius = 30
-        button1.layer.shadowOpacity = 0.2
+        //button1.layer.shadowOpacity = 0.2
         button2.layer.shadowOpacity = 0.2
         button3.layer.shadowOpacity = 0.2
+        button1.setImage(UIImage(named: "Coupon"), for: .normal)
+        button1.imageEdgeInsets = UIEdgeInsets(top: 20, left: 30, bottom: 20, right: 270)
+        button1.layer.borderWidth = 2
+        button1.layer.borderColor = UIColor.systemGray5.cgColor
+        //var config =  UIButton.Configuration.plain()
+        //config.imagePlacement = .leading
+        //config.imagePadding = 25
+        //button1.configuration = config
     }
     
     func layout(){
@@ -83,9 +91,9 @@ extension SettingsBottomView{
             button3.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             button3.heightAnchor.constraint(equalToConstant: 100),
             
-            button1.titleLabel!.leadingAnchor.constraint(equalTo: button1.imageView!.leadingAnchor, constant: 15),
-            button3.titleLabel!.leadingAnchor.constraint(equalTo: button3.imageView!.leadingAnchor, constant: 15),
-            button2.titleLabel!.leadingAnchor.constraint(equalTo: button2.imageView!.leadingAnchor, constant: 15)
+            //button1.titleLabel!.leadingAnchor.constraint(equalTo: button1.imageView!.leadingAnchor, constant: 15),
+            //button3.titleLabel!.leadingAnchor.constraint(equalTo: button3.imageView!.leadingAnchor, constant: 15),
+            //button2.titleLabel!.leadingAnchor.constraint(equalTo: button2.imageView!.leadingAnchor, constant: 15)
         
         ])
         
@@ -102,13 +110,13 @@ extension SettingsBottomView{
             substring1ForButton = buttonText.substring(to: newlineRangeForButton.location) as NSString
             substring2ForButton = buttonText.substring(from: newlineRangeForButton.location) as NSString
                 }
-        let fontForButton:UIFont? = UIFont(name: "Inter-SemiBold", size: 22)
+        let fontForButton:UIFont? = UIFont(name: "Inter-SemiBold", size: 18)
                 let attrString = NSMutableAttributedString(
                     string: substring1ForButton as String,
                     attributes: NSDictionary(
                         object: fontForButton!,
                         forKey: NSAttributedString.Key.font as NSCopying) as? [NSAttributedString.Key : Any] )
-        let font1ForButton:UIFont? = UIFont(name: "Inter", size: 15)
+        let font1ForButton:UIFont? = UIFont(name: "Inter", size: 12)
                let attrString1 = NSMutableAttributedString(
                    string: substring2ForButton as String,
                    attributes: NSDictionary(

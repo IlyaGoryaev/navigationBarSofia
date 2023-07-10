@@ -8,8 +8,9 @@ class FeedCellCollectionViewKitchens: UICollectionViewCell {
     
     var count: Int = 0
     
-    let view = DetailViewController()
+    //let view = DetailViewController()
     
+    static let shared = FeedCellCollectionViewKitchens()
     
     let collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout.init())
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
@@ -99,6 +100,18 @@ extension FeedCellCollectionViewKitchens: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoritesCellId", for: indexPath) as? KitchensCell{
+            Firebase.Database.database().reference().child("Kichens").child(nameFavArray[indexPath.row]).getData { error, snapshot in
+                if error != nil{
+                    print(error!)
+                    return
+                }
+                guard let snapshotValue = snapshot?.value as? [String: AnyObject] else { print("Ошибка 2")
+                    return }
+                
+                for item in snapshotValue{
+                    AppDelegate.defaults.setValue(item.value, forKey: self.nameFavArray[indexPath.row])
+                }
+            }
             let representedId = indexPath.row
             cell.representedId = String(representedId)
             cell.imageView.image = nil
@@ -155,42 +168,60 @@ extension FeedCellCollectionViewKitchens{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let controller = UIViewController()
-        controller.modalPresentationStyle = .fullScreen
-        controller.view.backgroundColor = .red
-        let backButton = UIButton()
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        controller.view.addSubview(backButton)
-        backButton.setTitle("Back", for: .normal)
-        backButton.setTitleColor(.label, for: .normal)
-        NSLayoutConstraint.activate([
-            backButton.centerXAnchor.constraint(equalTo: controller.view.centerXAnchor),
-            backButton.centerYAnchor.constraint(equalTo: controller.view.centerYAnchor)
-        
-        ])
-        
-        
-        if let controllerView = UIApplication.shared.delegate?.window?!.windowScene?.keyWindow?.rootViewController as? TabBarController{
-            print("gferfer")
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoritesCellId", for: indexPath) as? KitchensCell{
             
+            
+            
+            let controller = DetailViewController(collectionViewLayout: UICollectionViewFlowLayout(), name: nameFavArray[indexPath.row])
+            controller.modalPresentationStyle = .fullScreen
+            controller.view.backgroundColor = .white
+            let backButton = UIButton()
+            backButton.translatesAutoresizingMaskIntoConstraints = false
+            controller.view.addSubview(backButton)
+            backButton.setTitle("Back", for: .normal)
+            backButton.setTitleColor(.label, for: .normal)
+            backButton.addTarget(self, action: #selector(dismissController1), for: .touchUpInside)
+            NSLayoutConstraint.activate([
+                backButton.centerXAnchor.constraint(equalTo: controller.view.centerXAnchor),
+                backButton.bottomAnchor.constraint(equalTo: controller.view.safeAreaLayoutGuide.bottomAnchor)
+                
+            ])
+            
+            UIApplication.shared.delegate?.window?!.windowScene?.keyWindow?.rootViewController?.present(controller, animated: true)
             
             
         }
     }
+    
+    
 }
 
 extension FeedCellCollectionViewKitchens{
     
-    @objc func dismissController(){
-        
-        view.view.isHidden = true
-        
-        
-    }
+
     
     @objc func dismissController1(){
         
         UIApplication.shared.delegate?.window?!.windowScene?.keyWindow?.rootViewController?.dismiss(animated: true)
     }
+    
+    
+    /*func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset)
+        let y = scrollView.contentOffset.y
+        
+        let swipingDown = y <= 0
+        let shouldSnap = y > 30
+        let labelHeight = CatalogViewControllerKitchens.kitchens.headerView.frame.height + 20
+        
+        
+        UIView.animate(withDuration: 0.3) {
+            CatalogViewControllerKitchens.kitchens.headerView.catalogLabel.alpha = swipingDown ? 1.0 : 0.0
+            
+        }
+            CatalogViewControllerKitchens.kitchens.headerViewTopConstraints?.constant = shouldSnap ? -labelHeight : 0
+            CatalogViewControllerKitchens.kitchens.view.layoutIfNeeded()
+        
+    }*/
 
 }

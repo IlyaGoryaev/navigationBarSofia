@@ -48,4 +48,34 @@ class FirebaseDownload{
         }
     }
     
+    func getPictureForDetail(name: String, nameFolder: String, nameSubFolder: String, completion: @escaping (UIImage) -> Void){
+        
+        if let cachedImage = imageCache.object(forKey: "\(nameFolder)/\(nameSubFolder)/\(name)" as NSString){
+            completion(cachedImage)
+            
+        } else {
+            
+            
+            let logoRef = self.storeRef.child("\(nameFolder)/\(nameSubFolder)/\(name)")
+            
+            imageStorageReference = logoRef
+            
+            var image: UIImage? = UIImage(named: "Лайм")!
+            
+            logoRef.getData(maxSize: 2048 * 1024) { data, error in
+                if error != nil{
+                    print(error!)
+                    return
+                }
+                
+                image = UIImage(data: data!)!
+                self.imageCache.setObject(image!, forKey: "\(nameFolder)/\(nameSubFolder)/\(name)" as NSString)
+                completion(image!)
+            }.resume()
+            
+        }
+        
+        
+    }
+    
 }

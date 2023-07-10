@@ -16,6 +16,8 @@ class SettingsViewController: UICollectionViewController, UICollectionViewDelega
         
         tabBarController?.tabBar.backgroundColor = .systemGray6
         
+        tabBarItem = UITabBarItem(title: "Настройки", image: UIImage(systemName: "gear"), tag: 0)
+        
         title = "Настройки"
         
         navigationController?.navigationBar.tintColor = .white

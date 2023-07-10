@@ -35,20 +35,20 @@ extension CatalogHeaderView{
     
     func style(){
         
-        catalogLabel.translatesAutoresizingMaskIntoConstraints = false
+        /*catalogLabel.translatesAutoresizingMaskIntoConstraints = false
         catalogLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         catalogLabel.text = "Каталог"
         catalogLabel.font = UIFont(name: "Inter-Bold", size: 22)
         catalogLabel.numberOfLines = 0
-        catalogLabel.lineBreakMode = .byWordWrapping
+        catalogLabel.lineBreakMode = .byWordWrapping*/
         
         catalogButton1.translatesAutoresizingMaskIntoConstraints = false
-        catalogButton1.setTitleColor(.label, for: .normal)
+        catalogButton1.setTitleColor(.white, for: .normal)
         catalogButton1.setTitle("Кухни", for: .normal)
         catalogButton1.titleLabel?.font = UIFont(name: "Inter", size: 10)
         
         catalogButton2.translatesAutoresizingMaskIntoConstraints = false
-        catalogButton2.setTitleColor(.label, for: .normal)
+        catalogButton2.setTitleColor(.white, for: .normal)
         catalogButton2.setTitle("Шкафы-купе", for: .normal)
         
         viewLine.translatesAutoresizingMaskIntoConstraints = false
@@ -58,7 +58,6 @@ extension CatalogHeaderView{
     }
     
     func layout(){
-        addSubview(catalogLabel)
         addSubview(catalogButton1)
         addSubview(catalogButton2)
         addSubview(viewLine)
@@ -66,15 +65,12 @@ extension CatalogHeaderView{
         viewLineConstraint = viewLine.widthAnchor.constraint(equalToConstant: 55)
         viewLineConstraintLeading = viewLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15)
         NSLayoutConstraint.activate([
-            catalogLabel.topAnchor.constraint(equalTo: topAnchor, constant: 60),
-            catalogLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
-            trailingAnchor.constraint(equalToSystemSpacingAfter: catalogLabel.trailingAnchor, multiplier: 1),
             
-            catalogButton1.topAnchor.constraint(equalToSystemSpacingBelow: catalogLabel.bottomAnchor, multiplier: 2),
+            catalogButton1.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 2),
             catalogButton1.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2),
             bottomAnchor.constraint(equalToSystemSpacingBelow: catalogButton1.bottomAnchor, multiplier: 1),
             
-            catalogButton2.topAnchor.constraint(equalToSystemSpacingBelow: catalogLabel.bottomAnchor, multiplier: 2),
+            catalogButton2.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 2),
             catalogButton2.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: CGFloat(catalogButton1.titleLabel!.text!.count + 8)),
             bottomAnchor.constraint(equalToSystemSpacingBelow: catalogButton2.bottomAnchor, multiplier: 1),
 
